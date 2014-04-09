@@ -56,6 +56,10 @@ public class Plateau {
     public int[][] getEtatPlateau() {
         return etatPlateau;
     }
+    
+    public int getCase(int x, int y) {
+        return etatPlateau[x][y];
+    }
 
     public ArrayList<Point> etatId(int id) {
         ArrayList<Point> listPosition = null;
