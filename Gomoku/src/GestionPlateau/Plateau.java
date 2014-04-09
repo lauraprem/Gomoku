@@ -91,14 +91,17 @@ public class Plateau {
         }
     }
 
-    public void jouer(Coup coup) {
-        if (coup != null && coup.getPosition().x < longueur && coup.getPosition().y < largeur)// && coup.getId())
-        {
+    public boolean jouer(Coup coup) {
+        if (coup != null && coup.getPosition().x < longueur && coup.getPosition().y < largeur
+                && etatPlateau[coup.getPosition().x][coup.getPosition().y] == 0) {
             etatPlateau[coup.getPosition().x][coup.getPosition().y] = coup.getId();
 
             //Enregistrement Coup dans historique
             historique.add(coup);
+            
+            return true;
         }
+        return false;
     }
 
     public Coup annuler() {
