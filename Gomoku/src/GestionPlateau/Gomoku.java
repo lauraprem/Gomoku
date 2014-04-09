@@ -6,6 +6,9 @@
 
 package GestionPlateau;
 
+import java.awt.Point;
+import java.util.ArrayList;
+
 /**
  *
  * @author Corinne
@@ -16,7 +19,7 @@ public class Gomoku {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Plateau p = new Plateau(4,4);
+        Plateau p = new Plateau(9,9);
         System.err.println(p.toString());
     }
     

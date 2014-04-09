@@ -7,6 +7,7 @@ package GestionPlateau;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -16,15 +17,12 @@ public class Plateau {
 
     //1 joueur 1, 2 joueur 2
     // ATTRIBUTS
-    private int longueur;
-    private int largeur;
-    private int[][] etatPlateau;
-    private ArrayList<Coup> historique;
+    protected int longueur;               //NbreLignes
+    protected int largeur;                //NbreColonnes
+    protected int[][] etatPlateau;
+    protected ArrayList<Coup> historique;
 
-    // CONSTRUCTEURS
-    public Plateau() {
-    }
-
+    // CONSTRUCTEUR
     public Plateau(int _longueur, int _largeur) {
         longueur = _longueur;
         largeur = _largeur;
@@ -81,13 +79,41 @@ public class Plateau {
                 etatPlateau[i][j] = 0;
             }
         }
+        historique = new ArrayList<Coup>();
+    }
+
+    public void initialiser(ArrayList<Coup> coupsPrecedents) {
+        Iterator<Coup> it = coupsPrecedents.iterator();
+
+        while (it.hasNext()) {
+            Coup coup = (Coup) it.next();
+            etatPlateau[coup.getPosition().x][coup.getPosition().y] = coup.getId();
+        }
     }
 
     public void jouer(Coup coup) {
         if (coup != null && coup.getPosition().x < longueur && coup.getPosition().y < largeur)// && coup.getId())
         {
             etatPlateau[coup.getPosition().x][coup.getPosition().y] = coup.getId();
+
+            //Enregistrement Coup dans historique
+            historique.add(coup);
         }
+    }
+
+    public Coup annuler() {
+        if (historique.isEmpty() != true) {
+            Coup coup = historique.get(historique.size() - 1);
+
+            //Annulation du coup
+            etatPlateau[coup.getPosition().x][coup.getPosition().y] = 0;
+
+            //Suppression du coup de l'historique
+            historique.remove(historique.size() - 1);
+
+            return coup;
+        }
+        return null;
     }
 
     @Override
