@@ -17,7 +17,7 @@ public class JoueurAleatoire extends Joueur{
     @Override
     public Coup genererCoup(Plateau etatJeu) {
         
-        Coup res = new Coup( 
+        Coup res = new Coup( this.id,
                 new Point(Utilitaire.monRamdom(0,etatJeu.getLongueur()-1 ), 
                           Utilitaire.monRamdom(0,etatJeu.getLargeur()-1 )) );
         return res;

@@ -14,12 +14,13 @@ import java.awt.Point;
  */
 public class Coup {
     // ATTRIBUTS
+    // [longueur][largeur]
     private Point position;
-    private static int id = 0;
+    private int id ;
     
     // CONSTRUCTEURS
-    public Coup( Point _pos){
-        id ++;
+    public Coup(int _id, Point _pos){
+        this.id=_id;
         position = _pos;
     }
     
