@@ -181,7 +181,10 @@ public class Plateau {
 
         while (it.hasNext()) {
             Coup coup = (Coup) it.next();
-            etatPlateau[coup.getPosition().x][coup.getPosition().y] = coup.getId();
+            if (coup.getPosition().x >= 0 && coup.getPosition().x < longueur
+                    && coup.getPosition().y >= 0 && coup.getPosition().y < largeur) {
+                etatPlateau[coup.getPosition().x][coup.getPosition().y] = coup.getId();
+            }
         }
     }
 
@@ -194,7 +197,9 @@ public class Plateau {
      * @see Coup
      */
     public boolean jouer(Coup coup) {
-        if (coup != null && coup.getPosition().x < longueur && coup.getPosition().y < largeur
+        if (coup != null
+                && coup.getPosition().x < longueur && coup.getPosition().x >= 0
+                && coup.getPosition().y < largeur && coup.getPosition().y >= 0
                 && etatPlateau[coup.getPosition().x][coup.getPosition().y] == 0) {
             etatPlateau[coup.getPosition().x][coup.getPosition().y] = coup.getId();
 
