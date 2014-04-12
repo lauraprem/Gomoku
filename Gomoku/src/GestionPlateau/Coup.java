@@ -1,48 +1,84 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package GestionPlateau;
 
 import java.awt.Point;
 
 /**
+ * Représente un <b>Coup joué</b>
  *
- * @author Corinne
+ * @author Laura Prémillieu && Corinne Fagno
  */
 public class Coup {
     // ATTRIBUTS
-    // [longueur][largeur]
+    /**
+     *
+     * Position du Coup dans le plateau (x et y)
+     */
     private Point position;
-    private int id ;
-    
-    // CONSTRUCTEURS
-    public Coup(int _id, Point _pos){
-        this.id=_id;
+
+    /**
+     *
+     * correspond à l'id du joueur qui joue le Coup
+     */
+    private int id;
+
+    // CONSTRUCTEUR
+    /**
+     * <b>Constructeur</b> permettant de créer un Coup avec une position et un
+     * id donnée
+     *
+     * @param _id represente le numero du joueur qui joue le Coup
+     * @param _pos represente la localisation dans le plateau (x et y)
+     * @see Point (java.awt.Point)
+     */
+    public Coup(int _id, Point _pos) {
+        id = _id;
         position = _pos;
     }
-    
+
     // ACCESSEURS
+    /**
+     * <b>Accesseur</b> permettant de recuperer la position du Coup
+     *
+     * @return position (x et y)
+     */
     public Point getPosition() {
         return position;
     }
 
+    /**
+     * <b>Accesseur</b> permettant de recuperer l'id du joueur
+     *
+     * @return id du joueur
+     */
     public int getId() {
         return id;
     }
-    
-    // MUTTATEURS
+
+    // MUTATEURS
+    /**
+     * <b>Mutateur</b> permettant de modifier la position du Coup
+     *
+     * @param position nouvelle position du Coup
+     */
     public void setPosition(Point position) {
         this.position = position;
     }
 
+    /**
+     * <b>Mutateur</b> permettant de modifier l'id du joueur du Coup
+     *
+     * @param id nouvel id du joueur
+     */
     public void setId(int id) {
         this.id = id;
     }
-    
+
     // METHODES
+    /**
+     * <b>Méthode</b> permettant l'affichage d'un Coup
+     *
+     * @return Affichage du Coup
+     */
     @Override
     public String toString() {
         return "Coup{" + "position=" + position + ", id=" + id + '}';
