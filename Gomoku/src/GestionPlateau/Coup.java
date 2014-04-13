@@ -9,17 +9,18 @@ import java.awt.Point;
  */
 public class Coup {
     // ATTRIBUTS
-    /**
-     *
-     * Position du Coup dans le plateau (x et y)
-     */
-    private Point position;
 
     /**
      *
      * correspond à l'id du joueur qui joue le Coup
      */
     private int id;
+
+    /**
+     *
+     * Position du Coup dans le plateau (x et y)
+     */
+    private Point position;
 
     // CONSTRUCTEUR
     /**
@@ -37,15 +38,6 @@ public class Coup {
 
     // ACCESSEURS
     /**
-     * <b>Accesseur</b> permettant de recuperer la position du Coup
-     *
-     * @return position (x et y)
-     */
-    public Point getPosition() {
-        return position;
-    }
-
-    /**
      * <b>Accesseur</b> permettant de recuperer l'id du joueur
      *
      * @return id du joueur
@@ -54,16 +46,16 @@ public class Coup {
         return id;
     }
 
-    // MUTATEURS
     /**
-     * <b>Mutateur</b> permettant de modifier la position du Coup
+     * <b>Accesseur</b> permettant de recuperer la position du Coup
      *
-     * @param position nouvelle position du Coup
+     * @return position (x et y)
      */
-    public void setPosition(Point position) {
-        this.position = position;
+    public Point getPosition() {
+        return position;
     }
 
+    // MUTATEURS
     /**
      * <b>Mutateur</b> permettant de modifier l'id du joueur du Coup
      *
@@ -71,6 +63,15 @@ public class Coup {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     * <b>Mutateur</b> permettant de modifier la position du Coup
+     *
+     * @param position nouvelle position du Coup
+     */
+    public void setPosition(Point position) {
+        this.position = position;
     }
 
     // METHODES

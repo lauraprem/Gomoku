@@ -49,34 +49,6 @@ public class Plateau {
         initialiser();
     }
 
-    // MUTATEURS
-    /**
-     * <b>Mutateur</b> permettant de modifier le nombre de lignes du Plateau
-     *
-     * @param longueur nouveau nombre de lignes du Plateau
-     */
-    public void setLongueur(int longueur) {
-        this.longueur = longueur;
-    }
-
-    /**
-     * <b>Mutateur</b> permettant de modifier le nombre de colonnes du Plateau
-     *
-     * @param largeur nouveau nombre de colonnes du Plateau
-     */
-    public void setLargeur(int largeur) {
-        this.largeur = largeur;
-    }
-
-    /**
-     * <b>Mutateur</b> permettant de modifier l'état du Plateau
-     *
-     * @param etatPlateau tableau 2D d'entier contenant l'état du jeu
-     */
-    public void setEtatPlateau(int[][] etatPlateau) {
-        this.etatPlateau = etatPlateau;
-    }
-
     // ACCESSEURS
     /**
      * <b>Accesseur</b> permettant de recuperer le nombre de lignes du Plateau
@@ -117,6 +89,46 @@ public class Plateau {
     }
 
     /**
+     * <b>Accesseur</b> permettant de recuperer l'historique des Coups joués sur
+     * le Plateau
+     *
+     * @return Tout les Coups joués sur le Plateau
+     * @see Coup
+     */
+    public ArrayList<Coup> getHistorique() {
+        return historique;
+    }
+
+    // MUTATEURS
+    /**
+     * <b>Mutateur</b> permettant de modifier le nombre de lignes du Plateau
+     *
+     * @param longueur nouveau nombre de lignes du Plateau
+     */
+    public void setLongueur(int longueur) {
+        this.longueur = longueur;
+    }
+
+    /**
+     * <b>Mutateur</b> permettant de modifier le nombre de colonnes du Plateau
+     *
+     * @param largeur nouveau nombre de colonnes du Plateau
+     */
+    public void setLargeur(int largeur) {
+        this.largeur = largeur;
+    }
+
+    /**
+     * <b>Mutateur</b> permettant de modifier l'état du Plateau
+     *
+     * @param etatPlateau tableau 2D d'entier contenant l'état du jeu
+     */
+    public void setEtatPlateau(int[][] etatPlateau) {
+        this.etatPlateau = etatPlateau;
+    }
+
+    // METHODES
+    /**
      * <b>Méthode</b> permettant de recuperer les coordonnées de toutes les
      * cases joué par un joueur donné
      *
@@ -139,18 +151,6 @@ public class Plateau {
         return listPosition;
     }
 
-    /**
-     * <b>Accesseur</b> permettant de recuperer l'historique des Coups joués sur
-     * le Plateau
-     *
-     * @return Tout les Coups joués sur le Plateau
-     * @see Coup
-     */
-    public ArrayList<Coup> getHistorique() {
-        return historique;
-    }
-
-    // METHODES
     /**
      * <b>Méthode</b> permettant d'initialiser l'état de toutes les cases du
      * Plateau à 0
