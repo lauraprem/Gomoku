@@ -57,6 +57,11 @@ public abstract class JeuDePlateau
     {
         this.plateau = plateau;
     }
+    
+    public Plateau getPlateau()
+    {
+        return this.plateau;
+    }
 
     /**
      * <b>Méthode</b> permet de modifier le joueur courant pour changer de tour
