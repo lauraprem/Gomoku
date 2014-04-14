@@ -3,13 +3,14 @@ package JeuDePlateau;
 import GestionPlateau.Coup;
 import GestionPlateau.Plateau;
 import Joueurs.Joueur;
+import java.util.ArrayList;
 
 /**
  * représente une partie d'un jeu de plateau quelconque
  *
  * @author Laura Prémillieu && Corinne Fagno
  */
-public abstract class JeuDePlateau
+public abstract class JeuDePlateau 
 {
     //ATTRIBUTS
     /**
@@ -77,6 +78,26 @@ public abstract class JeuDePlateau
         }
     }
 
+    /**
+     * permet de récupérer une copi profonde de l'historique
+     * @return liste de coup équivalent à l'historique 
+     */
+    public ArrayList<Coup> getSituation()
+    {
+        ArrayList<Coup> res = new ArrayList<>();
+        for (int i = 0; i < plateau.getHistorique().size() ; i++)
+        {
+            try{
+            Coup c = (Coup)plateau.getHistorique().get(i).clone();
+            res.add(c);
+            }
+            catch(CloneNotSupportedException e)
+            {System.err.println(e.getMessage());}
+        }
+        
+        return res;
+    }
+    
     /**
      * <b>Méthode</b> permet de savoir si le joueur courant a gagné
      *

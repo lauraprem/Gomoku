@@ -10,7 +10,7 @@ import Joueurs.Joueur;
  *
  * @author Laura Prémillieu && Corinne Fagno
  */
-public class JeuDeGomoku extends JeuDePlateau
+public class JeuDeGomoku extends JeuDePlateau 
 {
 
     //ATTRIBUTS

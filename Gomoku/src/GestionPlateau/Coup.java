@@ -7,7 +7,7 @@ import java.awt.Point;
  *
  * @author Laura Prémillieu && Corinne Fagno
  */
-public class Coup {
+public class Coup implements Cloneable {
     // ATTRIBUTS
 
     /**
@@ -84,4 +84,12 @@ public class Coup {
     public String toString() {
         return "Coup{" + "position=" + position + ", id=" + id + '}';
     }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException
+    {
+        return new Coup(this.id,new Point(this.position.x,this.position.y));
+    }
+
+
 }
