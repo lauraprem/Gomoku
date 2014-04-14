@@ -7,7 +7,6 @@ package Tests;
  */
 
 import GestionPlateau.*;
-import JeuGomoku.*;
 import Joueurs.*;
 
 /**
