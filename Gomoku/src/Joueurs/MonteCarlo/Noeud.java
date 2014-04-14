@@ -10,84 +10,88 @@ import GestionPlateau.Coup;
 public class Noeud {
     // ATTRIBUTS
     /**
-     *
+     * Nombre de victoires
      */
     private int nbVictoire;
 
     /**
-     *
+     * Nombre de simulations qui seront effectuées
      */
     private int nbSimulation;
 
     /**
      *
+     * @see Coup
      */
     private Coup coup;
 
     // CONSTRUCTEUR
     /**
+     * <b>Constructeur</b> permettant de créer un Noeud avec un Coup
      *
      * @param _coup
+     * @see Coup
      */
     public Noeud(Coup _coup) {
-
+        coup = _coup;
+        nbVictoire = 0;
+        nbSimulation = 0;
     }
 
     // ACCESSEUR
     /**
+     * <b>Accesseur</b> permettant de recuperer le Coup du Noeud
      *
-     * @return
+     * @return le Coup du Noeud
+     * @see Coup
      */
     public Coup getCoup() {
         return coup;
     }
-    
+
     // MUTATEURS
     /**
-     * 
-     * @param nbVictoire 
-     */
-    public void setNbVictoire(int nbVictoire) {
-        this.nbVictoire = nbVictoire;
-    }
-
-    /**
-     * 
-     * @param nbSimulation 
+     * <b>Mutateur</b> permettant de modifier le nombre de simulations
+     *
+     * @param nbSimulation nombre de simulations qui sera effectuées
      */
     public void setNbSimulation(int nbSimulation) {
         this.nbSimulation = nbSimulation;
     }
 
     /**
-     * 
-     * @param coup 
+     * <b>Mutateur</b> permettant de modifier le Coup du Noeud
+     *
+     * @param coup le nouveau Coup du Noeud
+     * @see Coup
      */
     public void setCoup(Coup coup) {
         this.coup = coup;
     }
-    
-    
+
     // METHODES
     /**
+     * <b>Méthode</b> permettant de récupérer la moyenne statistique du Coup du
+     * Noeud
      *
-     * @return
+     * @return moyenne statistique du Coup
+     * @see Coup
      */
-    public double getMoyenne() {
-        return 0;
+    public double getMoyenne() {// A finir
+        return nbVictoire;
     }
-    
+
     /**
-     * 
+     * <b>Méthode</b> permettant d'augmenter de 1 le nombre de victoire
      */
-    public void ajouterVictoire(){
+    public void ajouterVictoire() {
         nbVictoire++;
     }
-    
+
     /**
-     * 
+     * <b>Méthode</b> permettant de diminuer de 1 le nombre de victoire
      */
-    public void ajouterDefaite(){
+    public void ajouterDefaite() {
         nbVictoire--;
     }
 }

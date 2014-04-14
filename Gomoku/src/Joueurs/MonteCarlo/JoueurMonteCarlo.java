@@ -3,6 +3,9 @@ package Joueurs.MonteCarlo;
 import GestionPlateau.Coup;
 import GestionPlateau.Plateau;
 import Joueurs.Joueur;
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Représente un <b>Coup joué</b>
@@ -43,6 +46,29 @@ public class JoueurMonteCarlo extends Joueur {
      */
     @Override
     public Coup genererCoup(Plateau etatJeu) {
-        return null;
+        Noeud meilleurCoup = null;
+        ArrayList<Point> positionsPossibles = etatJeu.etatId(0);
+
+        Iterator<Point> it = positionsPossibles.iterator();
+        while (it.hasNext()) {  // Parcours les Cases vides (possibles)
+            Coup cCourant = new Coup(id, (Point) it.next());
+            Noeud nCourant = new Noeud(cCourant);
+            etatJeu.jouer(cCourant);
+            //ArrayList<Coup> sit = etatJeu.getSituation(); // copie de l'historique
+
+            // Simuler nbSim parties à partir de sit et ajouter
+            // les résultats à nCourant à la fin de chaque
+            // simulation entre deux joueurs aléatoires
+            if (meilleurCoup == null || meilleurCoup.getMoyenne() < nCourant.getMoyenne()) {
+                meilleurCoup = nCourant;
+            }
+            etatJeu.annuler();
+        }
+
+        if (meilleurCoup != null) {
+            return meilleurCoup.getCoup();
+        } else {
+            return null;
+        }
     }
 }
