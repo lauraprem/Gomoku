@@ -11,13 +11,13 @@ public class Coup {
     // ATTRIBUTS
 
     /**
-     *
+     *<b> attribut </b>
      * correspond à l'id du joueur qui joue le Coup
      */
     private int id;
 
     /**
-     *
+     *<b> attribut </b>
      * Position du Coup dans le plateau (x et y)
      */
     private Point position;

@@ -3,19 +3,36 @@ package GestionPlateau;
 import java.awt.Point;
 
 /**
- *
+ *représsente un plateau de gomoku, qui étend un plateau de manière plus générale
+ * 
  * @author Laura Prémillieu && Corinne Fagno
  */
 public class PlateauGomoku extends Plateau {
 
+    /**
+     * <b>Constructeur</b> permettant de faire un plateau de taille 9,9
+     */
     public PlateauGomoku() {
         super(9, 9);
     }
 
+    /**
+     * <b>Constructeur</b> permettant de faire un plateau de la taille que l'on souhaite
+     * @param _longueur longueur du plateau
+     * @param _largeur largeur du plateau
+     */
     public PlateauGomoku(int _longueur, int _largeur) {
         super(_longueur, _largeur);
     }
 
+    /**
+     *  <b>Méthode</b> permettant de vérifier si un coup est gagnant sur une
+     * ligne en partant d'un point donné
+     * @param pos position du premier point pour tester une ligne gagnante
+     * @param n nombre de pions necessaire à aligner pour gagner
+     * @param id identifiant du joueur pour lequel on teste le coup
+     * @return vrai si la ligne est gagnante et faux si elle ne l'est pas
+     */
     public boolean CheckLigneId(Point pos, int n, int id) {
         int x = pos.x;
         int y = pos.y;
@@ -23,13 +40,17 @@ public class PlateauGomoku extends Plateau {
         while (y <= largeur && y < y_end && etatPlateau[x - 1][y - 1] == id) {
             y++;
         }
-        if (y == y_end) {
-            return true;
-        } else {
-            return false;
-        }
+        return y == y_end;
     }
 
+  /**
+     *  <b>Méthode</b> permettant de vérifier si un coup est gagnant sur une
+     * colone en partant d'un point donné
+     * @param pos position du premier point pour tester une colone gagnante
+     * @param n nombre de pions necessaire à aligner pour gagner
+     * @param id identifiant du joueur pour lequel on teste le coup
+     * @return vrai si la colone est gagnante et faux si elle ne l'est pas
+     */
     public boolean CheckColonneId(Point pos, int n, int id) {
         int x = pos.x;
         int y = pos.y;
@@ -37,13 +58,17 @@ public class PlateauGomoku extends Plateau {
         while (x <= longueur && x < x_end && etatPlateau[x - 1][y - 1] == id) {
             x++;
         }
-        if (x == x_end) {
-            return true;
-        } else {
-            return false;
-        }
+        return x == x_end;
     }
 
+    /**
+     * <b>Méthode</b> permet de parcourir la grille pour tester si chaque ligne
+     * et chaque colone est gagnante. Si l'on trouve une combinaison gagnante,
+     * on s'arrete
+     * @param n nombre de pion à aligner pour gagner
+     * @param id identifiant du joueur pour qui on veut vérifier si le coup est gagnant
+     * @return vrai si le joueur a une position gagnante et faux sinon
+     */
     public boolean CkeckGagneId(int n, int id) {
         for (int i = 0; i < longueur; i++) {
             for (int j = 0; j < largeur; j++) {
