@@ -9,7 +9,8 @@ import java.util.Iterator;
  *
  * @author Laura Prémillieu && Corinne Fagno
  */
-public class Plateau {
+public class Plateau
+{
     // ATTRIBUTS   
     /**
      * Nombre de lignes du Plateau
@@ -41,7 +42,8 @@ public class Plateau {
      * @param _longueur Nombre de lignes du Plateau
      * @param _largeur Nombre de colonnes du Plateau
      */
-    public Plateau(int _longueur, int _largeur) {
+    public Plateau(int _longueur, int _largeur)
+    {
         longueur = _longueur;
         largeur = _largeur;
 
@@ -55,7 +57,8 @@ public class Plateau {
      *
      * @return nombre de lignes du Plateau
      */
-    public int getLongueur() {
+    public int getLongueur()
+    {
         return longueur;
     }
 
@@ -64,7 +67,8 @@ public class Plateau {
      *
      * @return nombre de colonnes du Plateau
      */
-    public int getLargeur() {
+    public int getLargeur()
+    {
         return largeur;
     }
 
@@ -73,7 +77,8 @@ public class Plateau {
      *
      * @return tableau 2D d'entier contenant l'état du jeu
      */
-    public int[][] getEtatPlateau() {
+    public int[][] getEtatPlateau()
+    {
         return etatPlateau;
     }
 
@@ -84,7 +89,8 @@ public class Plateau {
      * @param y numéro de la colonne où se trouve la case
      * @return 0 ou l'id du joueur qui a joué sur cette case
      */
-    public int getCase(int x, int y) {
+    public int getCase(int x, int y)
+    {
         return etatPlateau[x][y];
     }
 
@@ -95,7 +101,8 @@ public class Plateau {
      * @return Tout les Coups joués sur le Plateau
      * @see Coup
      */
-    public ArrayList<Coup> getHistorique() {
+    public ArrayList<Coup> getHistorique()
+    {
         return historique;
     }
 
@@ -105,7 +112,8 @@ public class Plateau {
      *
      * @param longueur nouveau nombre de lignes du Plateau
      */
-    public void setLongueur(int longueur) {
+    public void setLongueur(int longueur)
+    {
         this.longueur = longueur;
     }
 
@@ -114,7 +122,8 @@ public class Plateau {
      *
      * @param largeur nouveau nombre de colonnes du Plateau
      */
-    public void setLargeur(int largeur) {
+    public void setLargeur(int largeur)
+    {
         this.largeur = largeur;
     }
 
@@ -123,7 +132,8 @@ public class Plateau {
      *
      * @param etatPlateau tableau 2D d'entier contenant l'état du jeu
      */
-    public void setEtatPlateau(int[][] etatPlateau) {
+    public void setEtatPlateau(int[][] etatPlateau)
+    {
         this.etatPlateau = etatPlateau;
     }
 
@@ -136,13 +146,17 @@ public class Plateau {
      * @return liste de points qui représente les coordonnées des cases joué
      * @see Point
      */
-    public ArrayList<Point> etatId(int id) {
+    public ArrayList<Point> etatId(int id)
+    {
         ArrayList<Point> listPosition = null;
         Point p;
 
-        for (int i = 0; i < longueur; i++) {
-            for (int j = 0; j < largeur; j++) {
-                if (etatPlateau[i][j] == id) {
+        for (int i = 0; i < longueur; i++)
+        {
+            for (int j = 0; j < largeur; j++)
+            {
+                if (etatPlateau[i][j] == id)
+                {
                     p = new Point(i, j);
                     listPosition.add(p);
                 }
@@ -152,12 +166,28 @@ public class Plateau {
     }
 
     /**
+     * permet de connaitre l'identifiant du dernier joueur à avoir joué
+     * @return l'identifiant du dernier jouer avoir jouer, 0 si personne n'a encore joué
+     */
+    public int getDernierId()
+    {
+        if (historique.isEmpty())
+        {
+            return 0;
+        }
+        return historique.get(historique.size() - 1).getId();
+    }
+
+    /**
      * <b>Méthode</b> permettant d'initialiser l'état de toutes les cases du
      * Plateau à 0
      */
-    public void initialiser() {
-        for (int i = 0; i < longueur; i++) {
-            for (int j = 0; j < largeur; j++) {
+    public void initialiser()
+    {
+        for (int i = 0; i < longueur; i++)
+        {
+            for (int j = 0; j < largeur; j++)
+            {
                 etatPlateau[i][j] = 0;
             }
         }
@@ -172,17 +202,20 @@ public class Plateau {
      * @param coupsPrecedents Historique de Coups
      * @see Coup
      */
-    public void initialiser(ArrayList<Coup> coupsPrecedents) {
+    public void initialiser(ArrayList<Coup> coupsPrecedents)
+    {
         this.initialiser();
 
         historique = coupsPrecedents;
 
         Iterator<Coup> it = historique.iterator();
 
-        while (it.hasNext()) {
+        while (it.hasNext())
+        {
             Coup coup = (Coup) it.next();
             if (coup.getPosition().x >= 0 && coup.getPosition().x < longueur
-                    && coup.getPosition().y >= 0 && coup.getPosition().y < largeur) {
+                    && coup.getPosition().y >= 0 && coup.getPosition().y < largeur)
+            {
                 etatPlateau[coup.getPosition().x][coup.getPosition().y] = coup.getId();
             }
         }
@@ -196,11 +229,13 @@ public class Plateau {
      * @return 'true' si le Coup à bin été joué sinon 'false'
      * @see Coup
      */
-    public boolean jouer(Coup coup) {
+    public boolean jouer(Coup coup)
+    {
         if (coup != null
                 && coup.getPosition().x < longueur && coup.getPosition().x >= 0
                 && coup.getPosition().y < largeur && coup.getPosition().y >= 0
-                && etatPlateau[coup.getPosition().x][coup.getPosition().y] == 0) {
+                && etatPlateau[coup.getPosition().x][coup.getPosition().y] == 0)
+        {
             etatPlateau[coup.getPosition().x][coup.getPosition().y] = coup.getId();
 
             //Enregistrement Coup dans historique
@@ -217,8 +252,10 @@ public class Plateau {
      * @return le Coup qui a été annulé
      * @see Coup
      */
-    public Coup annuler() {
-        if (historique.isEmpty() != true) {
+    public Coup annuler()
+    {
+        if (historique.isEmpty() != true)
+        {
             Coup coup = historique.get(historique.size() - 1);
 
             //Annulation du coup
@@ -238,11 +275,14 @@ public class Plateau {
      * @return Affichage du Plateau
      */
     @Override
-    public String toString() {
+    public String toString()
+    {
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < longueur; i++) {
-            for (int j = 0; j < largeur; j++) {
+        for (int i = 0; i < longueur; i++)
+        {
+            for (int j = 0; j < largeur; j++)
+            {
                 sb.append(etatPlateau[i][j]);
                 sb.append(" ");
             }
