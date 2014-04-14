@@ -1,4 +1,4 @@
 /**
- * Joueurs du jeu
+ * Gestion des joueurs
  */
 package Joueurs;

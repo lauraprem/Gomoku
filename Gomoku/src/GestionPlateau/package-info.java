@@ -1,4 +1,4 @@
 /**
- * plateau et la gestion associée
+ * Gestion du plateau de jeu
  */
 package GestionPlateau;
