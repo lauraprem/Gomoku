@@ -34,18 +34,18 @@ public abstract class JeuDePlateau
     /**
      * <b>Mutateur</b> permet de modifier un joueur
      *
-     * @param ordre permet de savoir quel joueur on veut modifier (vrai = 1;
-     * faux = 0)
+     * @param ordre permet de savoir quel joueur on veut modifier (vrai = j1;
+     * faux = j2)
      * @param joueur le nouveau joueur
      */
     public void setJoueur(boolean ordre, Joueur joueur)
     {
         if (ordre)
         {
-            lesJoueurs[1] = joueur;
+            lesJoueurs[0] = joueur;
         } else
         {
-            lesJoueurs[0] = joueur;
+            lesJoueurs[1] = joueur;
         }
     }
 
@@ -78,25 +78,7 @@ public abstract class JeuDePlateau
         }
     }
 
-    /**
-     * permet de récupérer une copi profonde de l'historique
-     * @return liste de coup équivalent à l'historique 
-     */
-    public ArrayList<Coup> getSituation()
-    {
-        ArrayList<Coup> res = new ArrayList<>();
-        for (int i = 0; i < plateau.getHistorique().size() ; i++)
-        {
-            try{
-            Coup c = (Coup)plateau.getHistorique().get(i).clone();
-            res.add(c);
-            }
-            catch(CloneNotSupportedException e)
-            {System.err.println(e.getMessage());}
-        }
-        
-        return res;
-    }
+ 
     
     /**
      * <b>Méthode</b> permet de savoir si le joueur courant a gagné

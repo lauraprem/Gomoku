@@ -164,6 +164,26 @@ public class Plateau
         }
         return listPosition;
     }
+    
+       /**
+     * permet de récupérer une copi profonde de l'historique
+     * @return liste de coup équivalent à l'historique 
+     */
+    public ArrayList<Coup> getSituation()
+    {
+        ArrayList<Coup> res = new ArrayList<>();
+        for (int i = 0; i < this.getHistorique().size() ; i++)
+        {
+            try{
+            Coup c = (Coup)this.getHistorique().get(i).clone();
+            res.add(c);
+            }
+            catch(CloneNotSupportedException e)
+            {System.err.println(e.getMessage());}
+        }
+        
+        return res;
+    }
 
     /**
      * permet de connaitre l'identifiant du dernier joueur à avoir joué

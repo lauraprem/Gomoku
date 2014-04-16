@@ -62,6 +62,11 @@ public class JeuDeGomoku extends JeuDePlateau
         this(p.getDernierId() == j2.getId(), j1, j2, p.getLongueur(), p.getLargeur(), n);
         plateau.initialiser(p.getHistorique());
     }
+    
+    public JeuDeGomoku()
+    {
+        this(true,null,null,0,0,0);
+    }
 
     @Override
     public boolean coupValide(Coup coup)
