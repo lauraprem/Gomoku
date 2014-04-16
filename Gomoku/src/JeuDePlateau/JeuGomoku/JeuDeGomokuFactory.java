@@ -1,6 +1,7 @@
 package JeuDePlateau.JeuGomoku;
 
 import GestionPlateau.Coup;
+import GestionPlateau.PlateauGomoku;
 import JeuDePlateau.*;
 import Joueurs.Joueur;
 import Joueurs.JoueurAleatoire;
@@ -35,9 +36,13 @@ public class JeuDeGomokuFactory implements JeuDePlateauFactory
             return j;
         }
         else
-        {JeuDeGomoku j = new JeuDeGomoku(2 == situation.get(situation.size() - 1).getId(),
+        {/*JeuDeGomoku j = new JeuDeGomoku(2 == situation.get(situation.size() - 1).getId(),
                 new JoueurHumain(1), new JoueurAleatoire(2), 9, 9, 4);
-        j.getPlateau().initialiser(situation);
+        j.getPlateau().initialiser(situation);*/
+            PlateauGomoku p = new PlateauGomoku();
+            p.setHistorique(situation);
+            JeuDeGomoku j = new JeuDeGomoku(new JoueurHumain(situation.get(0).getId()), 
+                    new JoueurAleatoire(situation.get(1).getId()), 4, p);
         return j;
         }
     }

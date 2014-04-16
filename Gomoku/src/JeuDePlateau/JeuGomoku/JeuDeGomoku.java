@@ -39,10 +39,10 @@ public class JeuDeGomoku extends JeuDePlateau
     {
         if (joueur1)
         {
-            joueurCourant = j2;
+            joueurCourant = j1;
         } else
         {
-            joueurCourant = j1;
+            joueurCourant = j2;
         }
         plateau = new PlateauGomoku(longueur, largeur);
         this.lesJoueurs = new Joueur[2];

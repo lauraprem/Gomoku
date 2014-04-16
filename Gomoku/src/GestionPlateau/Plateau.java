@@ -233,8 +233,8 @@ public class Plateau
         while (it.hasNext())
         {
             Coup coup = (Coup) it.next();
-            if (coup.getPosition().x > 0 && coup.getPosition().x <= longueur
-                    && coup.getPosition().y > 0 && coup.getPosition().y <= largeur)
+            if (coup.getPosition().x >= 0 && coup.getPosition().x < longueur
+                    && coup.getPosition().y >= 0 && coup.getPosition().y < largeur)
             {
                 etatPlateau[coup.getPosition().x][coup.getPosition().y] = coup.getId();
             }
@@ -290,6 +290,13 @@ public class Plateau
         return null;
     }
 
+    public void setHistorique(ArrayList<Coup> historique)
+    {
+        this.historique = historique;
+    }
+
+    
+    
     /**
      * <b>Méthode</b> permettant l'affichage d'un Plateau
      *

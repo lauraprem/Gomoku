@@ -40,4 +40,11 @@ public int getId()
  */
 public abstract Coup genererCoup(Plateau etatJeu);
 
+    @Override
+    public String toString()
+    {
+        return "Joueur d'ID : " + id + "\n";
+    }
+
+
 }
