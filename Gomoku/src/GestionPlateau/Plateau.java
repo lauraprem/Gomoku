@@ -148,7 +148,7 @@ public class Plateau
      */
     public ArrayList<Point> etatId(int id)
     {
-        ArrayList<Point> listPosition = null;
+        ArrayList<Point> listPosition = new ArrayList<Point>();
         Point p;
 
         for (int i = 0; i < longueur; i++)

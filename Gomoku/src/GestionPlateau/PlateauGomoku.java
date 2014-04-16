@@ -70,8 +70,8 @@ public class PlateauGomoku extends Plateau {
      * @return vrai si le joueur a une position gagnante et faux sinon
      */
     public boolean CkeckGagneId(int n, int id) {
-        for (int i = 0; i < longueur; i++) {
-            for (int j = 0; j < largeur; j++) {
+        for (int i = 1; i <= longueur; i++) {
+            for (int j = 1; j <= largeur; j++) {
                 if (i < longueur - n && CheckColonneId(new Point(i, j), n, id)) {
                     return true;
                 }
