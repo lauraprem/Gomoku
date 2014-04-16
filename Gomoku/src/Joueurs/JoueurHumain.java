@@ -47,7 +47,7 @@ public class JoueurHumain extends Joueur {
             longueur = sc.nextInt();
         }
 
-        Coup res = new Coup(this.id, new Point(longueur - 1, largeur - 1));
+        Coup res = new Coup(this.id, new Point(longueur , largeur ));
         return res;
     }
 

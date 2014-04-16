@@ -252,11 +252,11 @@ public class Plateau
     public boolean jouer(Coup coup)
     {
         if (coup != null
-                && coup.getPosition().x < longueur && coup.getPosition().x >= 0
-                && coup.getPosition().y < largeur && coup.getPosition().y >= 0
-                && etatPlateau[coup.getPosition().x][coup.getPosition().y] == 0)
+                && coup.getPosition().x <= longueur && coup.getPosition().x > 0
+                && coup.getPosition().y <= largeur && coup.getPosition().y > 0
+                && etatPlateau[coup.getPosition().x -1][coup.getPosition().y-1] == 0)
         {
-            etatPlateau[coup.getPosition().x][coup.getPosition().y] = coup.getId();
+            etatPlateau[coup.getPosition().x -1][coup.getPosition().y -1] = coup.getId();
 
             //Enregistrement Coup dans historique
             historique.add(coup);

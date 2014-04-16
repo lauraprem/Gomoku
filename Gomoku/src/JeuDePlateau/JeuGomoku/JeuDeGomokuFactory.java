@@ -27,10 +27,19 @@ public class JeuDeGomokuFactory implements JeuDePlateauFactory
     @Override
     public JeuDeGomoku CreerPartieHumainVSAleatoire(ArrayList<Coup> situation)
     {
-        JeuDeGomoku j = new JeuDeGomoku(2 == situation.get(situation.size() - 1).getId(),
+        if (situation == null)
+        {
+            Joueur j1 = new JoueurHumain(1);
+            Joueur j2 = new JoueurAleatoire(2);
+            JeuDeGomoku j = new JeuDeGomoku(true, j1, j2, 9, 9, 4);
+            return j;
+        }
+        else
+        {JeuDeGomoku j = new JeuDeGomoku(2 == situation.get(situation.size() - 1).getId(),
                 new JoueurHumain(1), new JoueurAleatoire(2), 9, 9, 4);
         j.getPlateau().initialiser(situation);
         return j;
+        }
     }
 
     @Override

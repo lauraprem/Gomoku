@@ -83,9 +83,9 @@ public class JeuDeGomoku extends JeuDePlateau
     public boolean coupValide(Coup coup)
     {
         {
-            return ((coup.getPosition().x >= 0 && coup.getPosition().x < plateau.getLongueur())
-                    && (coup.getPosition().y >= 0 && coup.getPosition().x < plateau.getLargeur())
-                    && plateau.getCase(coup.getPosition().x, coup.getPosition().y) == 0);
+            return ((coup.getPosition().x > 0 && coup.getPosition().x <= plateau.getLongueur())
+                    && (coup.getPosition().y > 0 && coup.getPosition().x <= plateau.getLargeur())
+                    && plateau.getCase(coup.getPosition().x -1, coup.getPosition().y-1) == 0);
         }
     }
 
@@ -109,22 +109,26 @@ public class JeuDeGomoku extends JeuDePlateau
     @Override
     public Joueur jouerPartie()
     {
+        System.out.println(plateau.toString());
+        System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n" );
         Coup c = joueurCourant.genererCoup(plateau);
         while (!(coupValide(c)))
         {
             c = joueurCourant.genererCoup(plateau);
         }
         plateau.jouer(c);
-
+        System.out.println(plateau.toString());
         while (!(partieTerminee()))
         {
             joueurSuivant();
+            System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n" );
             c = joueurCourant.genererCoup(plateau);
             while (!(coupValide(c)))
             {
                 c = joueurCourant.genererCoup(plateau);
             }
             plateau.jouer(c);
+            System.out.println(plateau.toString());
         }
         return joueurCourant;
     }

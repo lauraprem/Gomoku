@@ -72,10 +72,10 @@ public class PlateauGomoku extends Plateau {
     public boolean CkeckGagneId(int n, int id) {
         for (int i = 1; i <= longueur; i++) {
             for (int j = 1; j <= largeur; j++) {
-                if (i < longueur - n && CheckColonneId(new Point(i, j), n, id)) {
+                if (i <= longueur - n && CheckColonneId(new Point(i, j), n, id)) {
                     return true;
                 }
-                if (j < largeur - n && CheckLigneId(new Point(i, j), n, id)) {
+                if (j <= largeur - n && CheckLigneId(new Point(i, j), n, id)) {
                     return true;
                 }
             }
