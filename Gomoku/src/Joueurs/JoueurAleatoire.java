@@ -31,8 +31,8 @@ public class JoueurAleatoire extends Joueur {
     public Coup genererCoup(Plateau etatJeu) {
 
         Coup res = new Coup(this.id,
-                new Point(Utilitaire.monRamdom(0, etatJeu.getLongueur() - 1),
-                        Utilitaire.monRamdom(0, etatJeu.getLargeur() - 1)));
+                new Point(Utilitaire.monRamdom(1, etatJeu.getLongueur() ),
+                        Utilitaire.monRamdom(1, etatJeu.getLargeur())));
         return res;
     }
 
