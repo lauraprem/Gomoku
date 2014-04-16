@@ -233,8 +233,8 @@ public class Plateau
         while (it.hasNext())
         {
             Coup coup = (Coup) it.next();
-            if (coup.getPosition().x >= 0 && coup.getPosition().x < longueur
-                    && coup.getPosition().y >= 0 && coup.getPosition().y < largeur)
+            if (coup.getPosition().x > 0 && coup.getPosition().x <= longueur
+                    && coup.getPosition().y > 0 && coup.getPosition().y <= largeur)
             {
                 etatPlateau[coup.getPosition().x][coup.getPosition().y] = coup.getId();
             }
@@ -259,7 +259,7 @@ public class Plateau
             etatPlateau[coup.getPosition().x -1][coup.getPosition().y -1] = coup.getId();
 
             //Enregistrement Coup dans historique
-            coup.setPosition(new Point(coup.getPosition().x -1, coup.getPosition().y));
+            coup.setPosition(new Point(coup.getPosition().x -1, coup.getPosition().y-1));
             historique.add(coup);
 
             return true;
