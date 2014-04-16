@@ -259,6 +259,7 @@ public class Plateau
             etatPlateau[coup.getPosition().x -1][coup.getPosition().y -1] = coup.getId();
 
             //Enregistrement Coup dans historique
+            coup.setPosition(new Point(coup.getPosition().x -1, coup.getPosition().y));
             historique.add(coup);
 
             return true;

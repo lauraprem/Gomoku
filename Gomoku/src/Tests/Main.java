@@ -12,6 +12,7 @@ import GestionPlateau.PlateauGomoku;
 import JeuDePlateau.JeuGomoku.JeuDeGomoku;
 import JeuDePlateau.JeuGomoku.JeuDeGomokuFactory;
 import java.awt.Point;
+import java.util.ArrayList;
 
 /**
  *
@@ -32,8 +33,15 @@ public class Main
          System.out.println(p.toString());*/
          
          JeuDeGomokuFactory f = new JeuDeGomokuFactory();
-         JeuDeGomoku j = f.CreerPartieHumainVSAleatoire(null);
+         //JeuDeGomoku j = f.CreerPartieHumainVSAleatoire(null);
          
-         j.jouerPartie();
+         //j.jouerPartie();
+         ArrayList<Coup> historique = new ArrayList();
+         historique.add(new Coup(1,new Point(1, 1)));
+         historique.add(new Coup(2,new Point(5, 3)));
+         historique.add(new Coup(1,new Point(4, 7)));
+         historique.add(new Coup(2,new Point(8, 8)));
+         JeuDeGomoku j2 = f.CreerPartieHumainVSAleatoire(historique);
+         j2.jouerPartie();
      }
 }

@@ -112,10 +112,10 @@ public class JeuDeGomoku extends JeuDePlateau
         System.out.println(plateau.toString());
         System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n" );
         Coup c = joueurCourant.genererCoup(plateau);
-        while (!(coupValide(c)))
+       /* while (!(coupValide(c)))
         {
             c = joueurCourant.genererCoup(plateau);
-        }
+        }*/
         plateau.jouer(c);
         System.out.println(plateau.toString());
         while (!(partieTerminee()))
@@ -123,10 +123,10 @@ public class JeuDeGomoku extends JeuDePlateau
             joueurSuivant();
             System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n" );
             c = joueurCourant.genererCoup(plateau);
-            while (!(coupValide(c)))
+           /* while (!(coupValide(c)))
             {
                 c = joueurCourant.genererCoup(plateau);
-            }
+            }*/
             plateau.jouer(c);
             System.out.println(plateau.toString());
         }
