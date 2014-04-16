@@ -4,6 +4,7 @@ import GestionPlateau.Coup;
 import GestionPlateau.PlateauGomoku;
 import JeuDePlateau.JeuDePlateau;
 import Joueurs.Joueur;
+import Joueurs.JoueurHumain;
 
 /**
  * représente une partie de Gomoku
@@ -44,6 +45,7 @@ public class JeuDeGomoku extends JeuDePlateau
             joueurCourant = j1;
         }
         plateau = new PlateauGomoku(longueur, largeur);
+        this.lesJoueurs = new Joueur[2];
         lesJoueurs[0] = j1;
         lesJoueurs[1] = j2;
         nbPionGagne = n;
@@ -63,9 +65,18 @@ public class JeuDeGomoku extends JeuDePlateau
         plateau.initialiser(p.getHistorique());
     }
     
+    /**
+     * Jeu de Gomoku par défaut : les deux joueurs sont humains, 
+     * le plateau mesure 9x9 cases et il faut quatre pions pour gagner
+     */
     public JeuDeGomoku()
     {
-        this(true,null,null,0,0,0);
+        this.lesJoueurs = new Joueur[2];
+        this.lesJoueurs[0]= new JoueurHumain(1);
+        this.lesJoueurs[1]=new JoueurHumain(2);
+        this.joueurCourant = this.lesJoueurs[0];
+        this.plateau = new PlateauGomoku();
+        this.nbPionGagne = 4;
     }
 
     @Override
