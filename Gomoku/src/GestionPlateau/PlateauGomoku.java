@@ -105,7 +105,7 @@ public class PlateauGomoku extends Plateau
      * <b>Méthode</b> Permet de savoir si l'un des joueurs a gagné
      * 
      * @param n nom nombre de pion à aligner pour gagner
-     * @return identifiant du gagnant ou 0 si aucun gagnant
+     * @return identifiant du gagnant ou -1 si aucun gagnant
      */
     public int CheckPlateau(int n)
     {
@@ -117,7 +117,7 @@ public class PlateauGomoku extends Plateau
             return 2;
         } else
         {
-            return 0;
+            return -1;
         }
 
     }

@@ -99,17 +99,34 @@ public class JeuDeGomoku extends JeuDePlateau {
     }
 
     /**
-     * <b>Méthode</b> permet de savoir si le joueur courant a gagné
+     * <b>Méthode</b> permet de savoir si la partie est terminée
      *
-     * @return vrai s'il a gagné et faux sinon
+     * @return 1 si le joueur courant a gagné, 0 si nul, -1 si partie pas terminée
      */
     @Override
-    public boolean partieTerminee() {
-        return ((PlateauGomoku) (plateau)).CheckGagneId(nbPionGagne, joueurCourant.getId());
+    public int partieTerminee() {
+        if (((PlateauGomoku) (plateau)).CheckGagneId(nbPionGagne, joueurCourant.getId()))
+                return 1;
+        else if (plateau.etatId(0).isEmpty())
+            return 0;
+        else 
+            return -1;
     }
 
+        /**
+     * <b>Méthode</b> Permet de savoir si l'un des joueurs a gagné ou s'il y a nul
+     * 
+     * @return identifiant du gagnant, -1 si aucun gagnant mais partie en cous, 0 si nul
+     */
     public int joueurGagnant() {
-        return ((PlateauGomoku) plateau).CheckPlateau(nbPionGagne);
+        int g = ((PlateauGomoku) plateau).CheckPlateau(nbPionGagne);
+        if (g != -1)
+            return g;
+        else if (plateau.etatId(0).isEmpty())
+            return 0;
+        return -1;
+        
+                
     }
 
     /**
@@ -120,8 +137,10 @@ public class JeuDeGomoku extends JeuDePlateau {
      */
     @Override
     public Joueur jouerPartie() {
+        
         int id = joueurGagnant();
-        if (id == 0) {
+        if (id == 0) { return null;}
+        else if (id != 0 && id != -1){return getLesJoueur(id);}
       //  System.out.println(plateau.toString());
             // System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n" );
             Coup c = joueurCourant.genererCoup(plateau);
@@ -130,7 +149,7 @@ public class JeuDeGomoku extends JeuDePlateau {
             }
             plateau.jouer(c);
             //  System.out.println(plateau.toString());
-            while (!(partieTerminee())) {
+            while (partieTerminee()==-1) {
                 joueurSuivant();
                 // System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n" );
                 c = joueurCourant.genererCoup(plateau);
@@ -140,10 +159,10 @@ public class JeuDeGomoku extends JeuDePlateau {
                 plateau.jouer(c);
                 // System.out.println(plateau.toString());
             }
-            return joueurCourant;
-        } else {
-            return getLesJoueur(id);
-        }
+            if (partieTerminee() == 1)
+                return joueurCourant;
+            else return null;
+        } 
     }
 
-}
+

@@ -85,7 +85,7 @@ public abstract class JeuDePlateau
      *
      * @return vrai s'il a gagné et faux sinon
      */
-    public abstract boolean partieTerminee();
+    public abstract int partieTerminee();
 
     /**
      * permet de savoir si un coup est authorisé (s'il est dans les bornes du
