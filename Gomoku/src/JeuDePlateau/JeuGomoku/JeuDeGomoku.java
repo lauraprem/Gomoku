@@ -11,8 +11,7 @@ import Joueurs.JoueurHumain;
  *
  * @author Laura Prémillieu && Corinne Fagno
  */
-public class JeuDeGomoku extends JeuDePlateau 
-{
+public class JeuDeGomoku extends JeuDePlateau {
 
     //ATTRIBUTS
     /**
@@ -35,13 +34,10 @@ public class JeuDeGomoku extends JeuDePlateau
      * @param largeur la latrgeur du plateau
      * @param n nombre de pions à aligner pour gagner
      */
-    public JeuDeGomoku(boolean joueur1, Joueur j1, Joueur j2, int longueur, int largeur, int n)
-    {
-        if (joueur1)
-        {
+    public JeuDeGomoku(boolean joueur1, Joueur j1, Joueur j2, int longueur, int largeur, int n) {
+        if (joueur1) {
             joueurCourant = j1;
-        } else
-        {
+        } else {
             joueurCourant = j2;
         }
         plateau = new PlateauGomoku(longueur, largeur);
@@ -59,21 +55,19 @@ public class JeuDeGomoku extends JeuDePlateau
      * @param n nombre de pions à aligner pour gagner
      * @param p plateau de Gomoku que l'on souhaite utiliser
      */
-    public JeuDeGomoku(Joueur j1, Joueur j2, int n, PlateauGomoku p)
-    {
+    public JeuDeGomoku(Joueur j1, Joueur j2, int n, PlateauGomoku p) {
         this(p.getDernierId() == j2.getId(), j1, j2, p.getLongueur(), p.getLargeur(), n);
         plateau.initialiser(p.getHistorique());
     }
-    
+
     /**
-     * Jeu de Gomoku par défaut : les deux joueurs sont humains, 
-     * le plateau mesure 9x9 cases et il faut quatre pions pour gagner
+     * Jeu de Gomoku par défaut : les deux joueurs sont humains, le plateau
+     * mesure 9x9 cases et il faut quatre pions pour gagner
      */
-    public JeuDeGomoku()
-    {
+    public JeuDeGomoku() {
         this.lesJoueurs = new Joueur[2];
-        this.lesJoueurs[0]= new JoueurHumain(1);
-        this.lesJoueurs[1]=new JoueurHumain(2);
+        this.lesJoueurs[0] = new JoueurHumain(1);
+        this.lesJoueurs[1] = new JoueurHumain(2);
         this.joueurCourant = this.lesJoueurs[0];
         this.plateau = new PlateauGomoku();
         this.nbPionGagne = 4;
@@ -81,25 +75,26 @@ public class JeuDeGomoku extends JeuDePlateau
 
     /**
      * <b>Methode<\b> Permet de retrouver un joueur avec son ID
+     *
      * @param id du joueur
-     * @return le joueur 
+     * @return le joueur
      */
-    public Joueur getLesJoueur(int id)
-    {
-        if(lesJoueurs[0].getId() == id)
+    public Joueur getLesJoueur(int id) {
+        if (lesJoueurs[0].getId() == id) {
             return lesJoueurs[0];
-        else if(lesJoueurs[1].getId() == id)
+        } else if (lesJoueurs[1].getId() == id) {
             return lesJoueurs[1];
-        else return null;
+        } else {
+            return null;
+        }
     }
-    
+
     @Override
-    public boolean coupValide(Coup coup)
-    {
+    public boolean coupValide(Coup coup) {
         {
             return ((coup.getPosition().x > 0 && coup.getPosition().x <= plateau.getLongueur())
                     && (coup.getPosition().y > 0 && coup.getPosition().x <= plateau.getLargeur())
-                    && plateau.getCase(coup.getPosition().x -1, coup.getPosition().y-1) == 0);
+                    && plateau.getCase(coup.getPosition().x - 1, coup.getPosition().y - 1) == 0);
         }
     }
 
@@ -109,14 +104,14 @@ public class JeuDeGomoku extends JeuDePlateau
      * @return vrai s'il a gagné et faux sinon
      */
     @Override
-    public boolean partieTerminee()
-    {
+    public boolean partieTerminee() {
         return ((PlateauGomoku) (plateau)).CheckGagneId(nbPionGagne, joueurCourant.getId());
     }
 
-    public int joueurGagnant()
-    {return ((PlateauGomoku) plateau).CheckPlateau(nbPionGagne);}
-    
+    public int joueurGagnant() {
+        return ((PlateauGomoku) plateau).CheckPlateau(nbPionGagne);
+    }
+
     /**
      * <b>Méthode</b> permettant de faire jouer les joueurs à tour de role
      * jusqu'a ce que l'un d'eux gagne
@@ -124,30 +119,31 @@ public class JeuDeGomoku extends JeuDePlateau
      * @return le joueur gagnant
      */
     @Override
-    public Joueur jouerPartie()
-    {
-        System.out.println(plateau.toString());
-       System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n" );
-        Coup c = joueurCourant.genererCoup(plateau);
-        while (!(coupValide(c)))
-        {
-            c = joueurCourant.genererCoup(plateau);
-        }
-        plateau.jouer(c);
-        System.out.println(plateau.toString());
-        while (!(partieTerminee()))
-        {
-            joueurSuivant();
-            System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n" );
-            c = joueurCourant.genererCoup(plateau);
-            while (!(coupValide(c)))
-            {
+    public Joueur jouerPartie() {
+        int id = joueurGagnant();
+        if (id == 0) {
+      //  System.out.println(plateau.toString());
+            // System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n" );
+            Coup c = joueurCourant.genererCoup(plateau);
+            while (!(coupValide(c))) {
                 c = joueurCourant.genererCoup(plateau);
             }
             plateau.jouer(c);
-            System.out.println(plateau.toString());
+            //  System.out.println(plateau.toString());
+            while (!(partieTerminee())) {
+                joueurSuivant();
+                // System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n" );
+                c = joueurCourant.genererCoup(plateau);
+                while (!(coupValide(c))) {
+                    c = joueurCourant.genererCoup(plateau);
+                }
+                plateau.jouer(c);
+                // System.out.println(plateau.toString());
+            }
+            return joueurCourant;
+        } else {
+            return getLesJoueur(id);
         }
-        return joueurCourant;
     }
 
 }

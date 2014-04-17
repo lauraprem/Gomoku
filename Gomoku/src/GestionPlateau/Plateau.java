@@ -224,7 +224,6 @@ public class Plateau {
      * @see Coup
      */
     public boolean jouer(Coup coup) {
-        Coup coupCopy = (Coup) coup.clone();
         if (coup != null
                 && coup.getPosition().x <= longueur && coup.getPosition().x > 0
                 && coup.getPosition().y <= largeur && coup.getPosition().y > 0
@@ -232,8 +231,8 @@ public class Plateau {
             etatPlateau[coup.getPosition().x - 1][coup.getPosition().y - 1] = coup.getId();
 
             //Enregistrement Coup dans historique
-            coupCopy.setPosition(new Position(coup.getPosition().x - 1, coup.getPosition().y - 1));
-            historique.add(coupCopy);
+            Coup coupCorrige = new Coup(coup.getId(),new Position(coup.getPosition().x - 1, coup.getPosition().y - 1));
+            historique.add(coupCorrige);
 
             return true;
         }

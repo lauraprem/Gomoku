@@ -63,7 +63,7 @@ public class JoueurMonteCarlo extends Joueur {
             Coup cCourant = new Coup(id, new Position(p.x+1, p.y+1));
             Noeud nCourant = new Noeud(cCourant);
             etatJeu.jouer(cCourant);
-            ArrayList<Coup> sit = etatJeu.getSituation(); // copie de l'historique
+            //ArrayList<Coup> sit = etatJeu.getSituation(); // copie de l'historique
 
             // Simuler nbSim parties à partir de sit et ajouter
             // les résultats à nCourant à la fin de chaque
@@ -75,7 +75,7 @@ public class JoueurMonteCarlo extends Joueur {
                 Joueur joueurGagnant = j.jouerPartie();//regarde qui a gagne(null pas detecte)
 
                 // Recherche si l'IA a gagnee
-                if (joueurGagnant.getId()-1 == id) {
+                if (joueurGagnant.getId() == id) {
                     nCourant.ajouterVictoire();
                 } else {
                     nCourant.ajouterDefaite();
