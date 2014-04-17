@@ -97,9 +97,12 @@ public class JeuDeGomoku extends JeuDePlateau
     @Override
     public boolean partieTerminee()
     {
-        return ((PlateauGomoku) (plateau)).CkeckGagneId(nbPionGagne, joueurCourant.getId());
+        return ((PlateauGomoku) (plateau)).CheckGagneId(nbPionGagne, joueurCourant.getId());
     }
 
+    public int joueurGagnant()
+    {return ((PlateauGomoku) plateau).CheckPlateau(nbPionGagne);}
+    
     /**
      * <b>Méthode</b> permettant de faire jouer les joueurs à tour de role
      * jusqu'a ce que l'un d'eux gagne
