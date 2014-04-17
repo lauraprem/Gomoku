@@ -72,10 +72,10 @@ public class JoueurMonteCarlo extends Joueur {
                 //reinitialiser sit // Problem de copie (pas faire par ref)
                 ArrayList<Coup> sitCopy = etatJeu.getSituation(); // copie de l'historique
                 JeuDePlateau j = factory.CreerPartieAleatoireVSAleatoire(sitCopy);
-                Joueur joueurGagant = j.jouerPartie();//regarde qui a gagne(null pas detecte)
+                Joueur joueurGagnant = j.jouerPartie();//regarde qui a gagne(null pas detecte)
 
                 // Recherche si l'IA a gagnee
-                if (joueurGagant.getId() == id) {
+                if (joueurGagnant.getId()-1 == id) {
                     nCourant.ajouterVictoire();
                 } else {
                     nCourant.ajouterDefaite();

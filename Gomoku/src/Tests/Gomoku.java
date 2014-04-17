@@ -23,8 +23,7 @@ public class Gomoku {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Plateau p = new Plateau(9, 9);
-        System.out.println(p.toString());
+        Plateau p = new PlateauGomoku();
 
         // Pour tester
         ArrayList<Coup> sit = new ArrayList<Coup>();
