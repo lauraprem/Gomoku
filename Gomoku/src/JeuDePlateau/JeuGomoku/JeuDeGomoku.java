@@ -79,6 +79,20 @@ public class JeuDeGomoku extends JeuDePlateau
         this.nbPionGagne = 4;
     }
 
+    /**
+     * <b>Methode<\b> Permet de retrouver un joueur avec son ID
+     * @param id du joueur
+     * @return le joueur 
+     */
+    public Joueur getLesJoueur(int id)
+    {
+        if(lesJoueurs[0].getId() == id)
+            return lesJoueurs[0];
+        else if(lesJoueurs[1].getId() == id)
+            return lesJoueurs[1];
+        else return null;
+    }
+    
     @Override
     public boolean coupValide(Coup coup)
     {
