@@ -109,26 +109,26 @@ public class JeuDeGomoku extends JeuDePlateau
     @Override
     public Joueur jouerPartie()
     {
-        System.out.println(plateau.toString());
-        System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n" );
+//        System.out.println(plateau.toString());
+//        System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n" );
         Coup c = joueurCourant.genererCoup(plateau);
-       /* while (!(coupValide(c)))
+        while (!(coupValide(c)))
         {
             c = joueurCourant.genererCoup(plateau);
-        }*/
+        }
         plateau.jouer(c);
-        System.out.println(plateau.toString());
+      //  System.out.println(plateau.toString());
         while (!(partieTerminee()))
         {
             joueurSuivant();
-            System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n" );
+//            System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n" );
             c = joueurCourant.genererCoup(plateau);
            /* while (!(coupValide(c)))
             {
                 c = joueurCourant.genererCoup(plateau);
             }*/
             plateau.jouer(c);
-            System.out.println(plateau.toString());
+//            System.out.println(plateau.toString());
         }
         return joueurCourant;
     }

@@ -77,8 +77,11 @@ public class Noeud {
      * @return moyenne statistique du Coup
      * @see Coup
      */
-    public double getMoyenne() {// A finir
-        return nbVictoire;
+    public double getMoyenne() {
+        if(nbSimulation!=0)
+        return nbVictoire/nbSimulation;
+        
+        return 0;
     }
 
     /**

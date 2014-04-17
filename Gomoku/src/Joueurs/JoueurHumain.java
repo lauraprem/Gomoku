@@ -2,7 +2,7 @@ package Joueurs;
 
 import GestionPlateau.Coup;
 import GestionPlateau.Plateau;
-import java.awt.Point;
+import GestionPlateau.Position;
 import java.util.Scanner;
 
 /**
@@ -47,7 +47,7 @@ public class JoueurHumain extends Joueur {
             longueur = sc.nextInt();
         }
 
-        Coup res = new Coup(this.id, new Point(longueur , largeur ));
+        Coup res = new Coup(this.id, new Position(longueur , largeur ));
         return res;
     }
 

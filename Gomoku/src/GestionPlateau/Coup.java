@@ -1,7 +1,5 @@
 package GestionPlateau;
 
-import java.awt.Point;
-
 /**
  * Représente un <b>Coup joué</b>
  *
@@ -11,16 +9,16 @@ public class Coup implements Cloneable {
     // ATTRIBUTS
 
     /**
-     *<b> attribut </b>
+     * <b> attribut </b>
      * correspond à l'id du joueur qui joue le Coup
      */
     private int id;
 
     /**
-     *<b> attribut </b>
+     * <b> attribut </b>
      * Position du Coup dans le plateau (x et y)
      */
-    private Point position;
+    private Position position;
 
     // CONSTRUCTEUR
     /**
@@ -31,7 +29,7 @@ public class Coup implements Cloneable {
      * @param _pos represente la localisation dans le plateau (x et y)
      * @see Point (java.awt.Point)
      */
-    public Coup(int _id, Point _pos) {
+    public Coup(int _id, Position _pos) {
         id = _id;
         position = _pos;
     }
@@ -51,7 +49,7 @@ public class Coup implements Cloneable {
      *
      * @return position (x et y)
      */
-    public Point getPosition() {
+    public Position getPosition() {
         return position;
     }
 
@@ -70,7 +68,7 @@ public class Coup implements Cloneable {
      *
      * @param position nouvelle position du Coup
      */
-    public void setPosition(Point position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
 
@@ -86,10 +84,18 @@ public class Coup implements Cloneable {
     }
 
     @Override
-    public Object clone() throws CloneNotSupportedException
-    {
-        return new Coup(this.id,new Point(this.position.x,this.position.y));
+    public Object clone() {
+        Coup coup = null;
+        try {
+            coup = (Coup) super.clone();
+        } catch (CloneNotSupportedException cnse) {
+            cnse.printStackTrace(System.err);
+        }
+
+        // On clone l'attribut de type Patronyme qui n'est pas immuable.
+        coup.position = (Position) position.clone();
+
+        // on renvoie le clone
+        return coup;
     }
-
-
 }

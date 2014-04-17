@@ -1,7 +1,5 @@
 package GestionPlateau;
 
-import java.awt.Point;
-
 /**
  *représsente un plateau de gomoku, qui étend un plateau de manière plus générale
  * 
@@ -33,7 +31,7 @@ public class PlateauGomoku extends Plateau {
      * @param id identifiant du joueur pour lequel on teste le coup
      * @return vrai si la ligne est gagnante et faux si elle ne l'est pas
      */
-    public boolean CheckLigneId(Point pos, int n, int id) {
+    public boolean CheckLigneId(Position pos, int n, int id) {
         int x = pos.x;
         int y = pos.y;
         int y_end = y + n;
@@ -51,7 +49,7 @@ public class PlateauGomoku extends Plateau {
      * @param id identifiant du joueur pour lequel on teste le coup
      * @return vrai si la colone est gagnante et faux si elle ne l'est pas
      */
-    public boolean CheckColonneId(Point pos, int n, int id) {
+    public boolean CheckColonneId(Position pos, int n, int id) {
         int x = pos.x;
         int y = pos.y;
         int x_end = x + n;
@@ -72,10 +70,10 @@ public class PlateauGomoku extends Plateau {
     public boolean CkeckGagneId(int n, int id) {
         for (int i = 1; i <= longueur; i++) {
             for (int j = 1; j <= largeur; j++) {
-                if (i <= longueur - n && CheckColonneId(new Point(i, j), n, id)) {
+                if (i <= longueur - n && CheckColonneId(new Position(i, j), n, id)) {
                     return true;
                 }
-                if (j <= largeur - n && CheckLigneId(new Point(i, j), n, id)) {
+                if (j <= largeur - n && CheckLigneId(new Position(i, j), n, id)) {
                     return true;
                 }
             }
