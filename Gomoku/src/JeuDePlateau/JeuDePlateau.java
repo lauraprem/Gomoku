@@ -104,4 +104,12 @@ public abstract class JeuDePlateau
      * @return le joueur gagnant
      */
     public abstract Joueur jouerPartie();
+    
+        /**
+     * <b>Méthode</b> permettant de faire jouer les joueurs à tour de role
+     * jusqu'a ce que l'un d'eux gagne sans affichage
+     *
+     * @return le joueur gagnant
+     */
+    public abstract Joueur jouerPartieSansAffichage();
 }

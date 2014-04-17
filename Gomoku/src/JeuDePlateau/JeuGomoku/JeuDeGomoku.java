@@ -202,6 +202,7 @@ public class JeuDeGomoku extends JeuDePlateau
      *
      * @return le joueur gagnant
      */
+    @Override
     public Joueur jouerPartieSansAffichage()
     {
 
