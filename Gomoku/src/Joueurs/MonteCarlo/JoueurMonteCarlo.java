@@ -2,8 +2,11 @@ package Joueurs.MonteCarlo;
 
 import GestionPlateau.Coup;
 import GestionPlateau.Plateau;
+import GestionPlateau.Position;
+import JeuDePlateau.JeuDePlateau;
+import JeuDePlateau.JeuDePlateauFactory;
+import JeuDePlateau.JeuGomoku.JeuDeGomoku;
 import Joueurs.Joueur;
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -18,6 +21,10 @@ public class JoueurMonteCarlo extends Joueur {
      * nombre de parties qui seront simulées
      */
     private int nbSimulation;
+    /**
+     *
+     */
+    private JeuDePlateauFactory factory;
 
     // CONSTRUCTEUR
     /**
@@ -26,10 +33,11 @@ public class JoueurMonteCarlo extends Joueur {
      *
      * @param _id numero du joueur de Monte Carlo
      * @param _nbSimulation nombre de simulations qui seront effectuées
-     * @param _factory ............
+     * @param _factory
      */
-    public JoueurMonteCarlo(int _id, int _nbSimulation) {
+    public JoueurMonteCarlo(int _id, int _nbSimulation, JeuDePlateauFactory _factory) {
         super(_id);
+        factory = _factory;
         nbSimulation = _nbSimulation;
     }
 
@@ -47,18 +55,34 @@ public class JoueurMonteCarlo extends Joueur {
     @Override
     public Coup genererCoup(Plateau etatJeu) {
         Noeud meilleurCoup = null;
-        ArrayList<Point> positionsPossibles = etatJeu.etatId(0);
+        ArrayList<Position> positionsPossibles = etatJeu.etatId(0);
 
-        Iterator<Point> it = positionsPossibles.iterator();
+        Iterator<Position> it = positionsPossibles.iterator();
         while (it.hasNext()) {  // Parcours les Cases vides (possibles)
-            Coup cCourant = new Coup(id, (Point) it.next());
+            Position p = (Position) it.next();
+            Coup cCourant = new Coup(id, new Position(p.x+1, p.y+1));
             Noeud nCourant = new Noeud(cCourant);
             etatJeu.jouer(cCourant);
-            //ArrayList<Coup> sit = etatJeu.getSituation(); // copie de l'historique
+            ArrayList<Coup> sit = etatJeu.getSituation(); // copie de l'historique
 
             // Simuler nbSim parties à partir de sit et ajouter
             // les résultats à nCourant à la fin de chaque
             // simulation entre deux joueurs aléatoires
+            for (int i = 0; i < nbSimulation; i++) {
+                //reinitialiser sit // Problem de copie (pas faire par ref)
+                ArrayList<Coup> sitCopy = etatJeu.getSituation(); // copie de l'historique
+                JeuDePlateau j = factory.CreerPartieAleatoireVSAleatoire(sitCopy);
+                Joueur joueurGagant = j.jouerPartie();//regarde qui a gagne(null pas detecte)
+
+                // Recherche si l'IA a gagnee
+                if (joueurGagant.getId() == id) {
+                    nCourant.ajouterVictoire();
+                } else {
+                    nCourant.ajouterDefaite();
+                }
+                nCourant.setNbSimulation(i + 1);
+            }
+
             if (meilleurCoup == null || meilleurCoup.getMoyenne() < nCourant.getMoyenne()) {
                 meilleurCoup = nCourant;
             }
