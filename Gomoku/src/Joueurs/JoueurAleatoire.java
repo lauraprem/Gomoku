@@ -3,6 +3,7 @@ package Joueurs;
 import GestionPlateau.Coup;
 import GestionPlateau.Plateau;
 import GestionPlateau.Position;
+import java.util.ArrayList;
 
 /**
  * reprensente un joueur qui choisit ses coups de manière aléatoire. Hérite d'un
@@ -29,10 +30,9 @@ public class JoueurAleatoire extends Joueur {
      */
     @Override
     public Coup genererCoup(Plateau etatJeu) {
-
-        Coup res = new Coup(this.id,
-                new Position(Utilitaire.monRamdom(1, etatJeu.getLongueur() ),
-                        Utilitaire.monRamdom(1, etatJeu.getLargeur())));
+        ArrayList<Position> pos = etatJeu.etatId(0);
+        Position p  = pos.get(Utilitaire.monRamdom(0,pos.size() -1 ));
+        Coup res = new Coup(this.id,p);
         return res;
     }
 
