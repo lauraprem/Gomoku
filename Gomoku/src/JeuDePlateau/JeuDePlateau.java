@@ -83,9 +83,10 @@ public abstract class JeuDePlateau
     /**
      * <b>Méthode</b> permet de savoir si le joueur courant a gagné
      *
+     * @param coup pour lequel on vérifie si le joueur a gagné
      * @return vrai s'il a gagné et faux sinon
      */
-    public abstract int partieTerminee();
+    public abstract int partieTerminee(Coup coup);
 
     /**
      * permet de savoir si un coup est authorisé (s'il est dans les bornes du

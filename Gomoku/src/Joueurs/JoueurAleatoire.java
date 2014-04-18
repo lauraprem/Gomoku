@@ -31,10 +31,13 @@ public class JoueurAleatoire extends Joueur {
     @Override
     public Coup genererCoup(Plateau etatJeu) {
         ArrayList<Position> pos = etatJeu.etatId(0);
-        Position p  = pos.get(Utilitaire.monRamdom(0,pos.size() -1 ));
+        if(pos.size() - 1  > 0)
+        {Position p  = pos.get(Utilitaire.monRamdom(0,pos.size() -1 ));
         p.x=p.x+1; p.y=p.y+1;
         Coup res = new Coup(this.id,p);
-        return res;
+        return res;}
+        else return null;
+        
     }
 
 }

@@ -40,7 +40,7 @@ public class Gomoku {
 
         JeuDePlateauFactory factory = new JeuDeGomokuFactory();
 
-        JoueurMonteCarlo jmc = new JoueurMonteCarlo(1, 50, factory);
+        JoueurMonteCarlo jmc = new JoueurMonteCarlo(1, 100, factory);
 
         System.out.println(p.toString());
 

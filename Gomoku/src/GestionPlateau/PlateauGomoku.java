@@ -81,7 +81,7 @@ public class PlateauGomoku extends Plateau
      * gagnant
      * @return vrai si le joueur a une position gagnante et faux sinon
      */
-    public boolean CheckGagneId(int n, int id)
+    public boolean CheckGagne(int n, int id)
     {
         for (int i = 1; i <= longueur; i++)
         {
@@ -101,18 +101,38 @@ public class PlateauGomoku extends Plateau
         return false;
     }
 
+    public boolean CheckGagneId(int n, int id, Position p)
+    {
+        for (int i = 1; i <= longueur - n; i++)
+        {
+            if (CheckColonneId(new Position(i, p.y), n, id))
+            {
+                return true;
+            }
+        }
+
+        for (int j = 1; j <= largeur - n; j++)
+        {
+            if (CheckLigneId(new Position(p.x, j), n, id))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * <b>Méthode</b> Permet de savoir si l'un des joueurs a gagné
-     * 
+     *
      * @param n nom nombre de pion à aligner pour gagner
      * @return identifiant du gagnant ou -1 si aucun gagnant
      */
     public int CheckPlateau(int n)
     {
-        if (CheckGagneId(n, 1))
+        if (CheckGagne(n, 1))
         {
             return 1;
-        } else if (CheckGagneId(n, 2))
+        } else if (CheckGagne(n, 2))
         {
             return 2;
         } else

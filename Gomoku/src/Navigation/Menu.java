@@ -1,11 +1,7 @@
 package Navigation;
 
-import GestionPlateau.Plateau;
-import GestionPlateau.PlateauGomoku;
 import JeuDePlateau.JeuGomoku.JeuDeGomoku;
-import Joueurs.JoueurAleatoire;
-import Joueurs.JoueurHumain;
-import Joueurs.MonteCarlo.JoueurMonteCarlo;
+import JeuDePlateau.JeuGomoku.JeuDeGomokuFactory;
 import java.util.Scanner;
 
 /**
@@ -18,13 +14,18 @@ public class Menu
     private int j1;
     private int j2;
     private int p;
-    JeuDeGomoku leJeu;
-    boolean jouer;
+    private int n;
+    private int largeur;
+    private int longueur;
+    private JeuDeGomoku leJeu;
+    private boolean jouer;
+    private JeuDeGomokuFactory f;
 
     public Menu()
     {
         jouer = true;
         leJeu = new JeuDeGomoku();
+        f = new JeuDeGomokuFactory();
     }
 
     public void run()
@@ -45,9 +46,10 @@ public class Menu
             j = sc.nextInt();
         }
         switch(j)
-        {case 1 : nouvellePartie();
-        case 2 : reprendrePartie();
+        {case 1 : nouvellePartie(); break;
+        case 2 : reprendrePartie();break;
         }
+        leJeu= f.CreerPartieMenu(j1, j2, p,largeur,longueur,n);
         System.out.println(leJeu.getPlateau().toString());
         leJeu.jouerPartie();
 
@@ -63,50 +65,31 @@ public class Menu
     private void nouveauxJoueur()
     {
         Scanner sc = new Scanner(System.in);
-        int j;
-
+   
         // JOUEUR 1
         System.out.println("Veuillez choisir le premier joueur : \n 1) Joueur Humain \n 2) Joueur Aléatoire \n 3) Joueur Monte Carlo");
-        j = sc.nextInt();
-        while (j != 1 && j != 2 && j != 3)
+        j1 = sc.nextInt();
+        while (j1 != 1 && j1 != 2 && j1 != 3)
         {
             System.out.println("Veuillez entrer un choix valide : \n 1) Joueur Humain \n 2) Joueur Aléatoire \n 3) Joueur Monte Carlo");
-            j = sc.nextInt();
+            j1 = sc.nextInt();
         }
-        System.out.println(j);
-        switch (j)
-        {
-            case 1:
-                leJeu.setJoueur(true, new JoueurHumain(1));
-            case 2:
-                leJeu.setJoueur(true, new JoueurAleatoire(1));
-            case 3:
-                leJeu.setJoueur(true, new JoueurMonteCarlo(1, 100));
-        }
+      
 
         // JOUEUR 2
         System.out.println("Veuillez choisir le second joueur : \n 1) Joueur Humain \n 2) Joueur Aléatoire \n 3) Joueur Monte Carlo");
-        j = sc.nextInt();
-        while (j != 1 && j != 2 && j != 3)
+        j2 = sc.nextInt();
+        while (j2 != 1 && j2 != 2 && j2 != 3)
         {
             System.out.println("Veuillez entrer un choix valide : \n 1) Joueur Humain \n 2) Joueur Aléatoire \n 3) Joueur Monte Carlo");
-            j = sc.nextInt();
+            j2 = sc.nextInt();
         }
-        switch (j)
-        {
-            case 1:
-                leJeu.setJoueur(false, new JoueurHumain(1));
-            case 2:
-                leJeu.setJoueur(false, new JoueurAleatoire(1));
-            case 3:
-                leJeu.setJoueur(false, new JoueurMonteCarlo(1, 100));
-        }
+
     }
 
     private void nouveauPlateau()
     {
         Scanner sc = new Scanner(System.in);
-        int p;
         System.out.println("Veuillez choisir un type de plateau : ");
         System.out.println("\n 1) Plateau standard 9x9 \n 2) Plateau personalisé");
         p = sc.nextInt();
@@ -115,45 +98,49 @@ public class Menu
             System.out.println("Veuillez entrer un choix valide : \n 1) Plateau standard 9x9 \n 2) Plateau personalisé");
             p = sc.nextInt();
         }
-        System.out.println(p);
-       // switch (p)
-        //{
-          //  case 1:
-                plateauStandard();
-            //case 2:
-               // plateauPerso();
-       // }
+        
+        switch(p)
+        { case 2 : plateauPerso();break;
+                default: plateauStandard();}
     }
 
     private void plateauPerso()
     {       
         Scanner sc = new Scanner(System.in);
-        PlateauGomoku p = new PlateauGomoku(0,0);
         
         System.out.println("Veuillez choisir la longeur du plateau");
-        p.setLongueur(sc.nextInt());
-        while (p.getLongueur() <= 0)
+        longueur = sc.nextInt();
+        while (longueur <= 0)
         {
             System.out.println("Veuillez choisir une longeur de plateau plus grande que zéro");
-            p.setLongueur(sc.nextInt());
+            longueur = sc.nextInt();
         }
         
         System.out.println("Veuillez choisir la largeur du plateau");
-        p.setLargeur(sc.nextInt());
-        while (p.getLargeur() <= 0)
+        largeur = sc.nextInt();
+        while (largeur <= 0)
         {
             System.out.println("Veuillez choisir une largeur de plateau plus grande que zéro");
-            p.setLargeur(sc.nextInt());
+            largeur = sc.nextInt();
         }
         
-        leJeu.setPlateau(p);
+        System.out.println("Veuillez choisir le nombre de pions necessaire pour gagner");
+        n = sc.nextInt();
+        while (n <= 1)
+        {
+            System.out.println("Veuillez choisir une largeur de plateau plus grande que zéro");
+            n = sc.nextInt();
+        }
+        
     }
 
     private void plateauStandard()
     {
-        PlateauGomoku p = new PlateauGomoku();
-        leJeu.setPlateau(p);
+         p = 1;
+         n = 4;
     }
     
-    private void reprendrePartie(){}
+    private void reprendrePartie(){
+    
+    }
 }

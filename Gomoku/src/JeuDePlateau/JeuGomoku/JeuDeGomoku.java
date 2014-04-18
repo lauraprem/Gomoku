@@ -103,6 +103,8 @@ public class JeuDeGomoku extends JeuDePlateau
     public boolean coupValide(Coup coup)
     {
         {
+            /*if (coup == null)
+                return false;*/
             return ((coup.getPosition().x > 0 && coup.getPosition().x <= plateau.getLongueur())
                     && (coup.getPosition().y > 0 && coup.getPosition().x <= plateau.getLargeur())
                     && plateau.getCase(coup.getPosition().x - 1, coup.getPosition().y - 1) == 0);
@@ -116,12 +118,12 @@ public class JeuDeGomoku extends JeuDePlateau
      * terminée
      */
     @Override
-    public int partieTerminee()
+    public int partieTerminee(Coup c)
     {
-        if (((PlateauGomoku) (plateau)).CheckGagneId(nbPionGagne, joueurCourant.getId()))
+        if (((PlateauGomoku) (plateau)).CheckGagneId(nbPionGagne, joueurCourant.getId(),c.getPosition()))
         {
             return 1;
-        } else if (plateau.etatId(0).isEmpty())
+        } else if (plateau.etatId(0).isEmpty() || c == null)
         {
             return 0;
         } else
@@ -160,7 +162,6 @@ public class JeuDeGomoku extends JeuDePlateau
     @Override
     public Joueur jouerPartie()
     {
-
         int id = joueurGagnant();
         if (id == 0)
             return null;
@@ -177,7 +178,7 @@ public class JeuDeGomoku extends JeuDePlateau
         plateau.jouer(c);
         System.out.println(plateau.toString());
         
-        while (partieTerminee() == -1)
+        while (partieTerminee(c) == -1)
         {
             joueurSuivant();
             System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n");
@@ -190,7 +191,7 @@ public class JeuDeGomoku extends JeuDePlateau
             System.out.println(plateau.toString());
         }
         
-        if (partieTerminee() == 1)
+        if (partieTerminee(c) == 1)
             return joueurCourant;
         else
             return null;
@@ -219,7 +220,7 @@ public class JeuDeGomoku extends JeuDePlateau
         }
         plateau.jouer(c);
         
-        while (partieTerminee() == -1)
+        while (partieTerminee(c) == -1)
         {
             joueurSuivant();
             c = joueurCourant.genererCoup(plateau);
@@ -229,7 +230,7 @@ public class JeuDeGomoku extends JeuDePlateau
             }
             plateau.jouer(c);
         }
-        if (partieTerminee() == 1)
+        if (partieTerminee(c) == 1)
             return joueurCourant;
         else
             return null;
