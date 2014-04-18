@@ -1,8 +1,11 @@
 package Navigation;
 
+import GestionPlateau.Coup;
+import GestionPlateau.Position;
 import JeuDePlateau.JeuGomoku.JeuDeGomoku;
 import JeuDePlateau.JeuGomoku.JeuDeGomokuFactory;
 import Joueurs.Joueur;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -71,7 +74,7 @@ public class Menu
                 }
                 if (!jouer)
                     break;
-                leJeu = f.CreerPartieMenu(j1, j2, p, largeur, longueur, n);
+              
                joueur = leJeu.jouerPartie();
                if (joueur == null)
                     System.out.println("Partie terminée !! Match nul. \n\n");
@@ -89,6 +92,7 @@ public class Menu
     {
         nouveauxJoueur();
         nouveauPlateau();
+          leJeu = f.CreerPartieMenu(j1, j2, p, largeur, longueur, n);
 
     }
 
@@ -187,6 +191,17 @@ public class Menu
 
     private void reprendrePartie()
     {
-
+        ArrayList<Coup> sit = new ArrayList<>();
+        sit.add(new Coup(2, new Position(0, 2)));
+        sit.add(new Coup(1, new Position(3, 6)));
+        sit.add(new Coup(2, new Position(1, 2)));
+        sit.add(new Coup(1, new Position(3, 5)));
+        sit.add(new Coup(2, new Position(2, 5)));
+        sit.add(new Coup(1, new Position(3, 4)));
+        sit.add(new Coup(2, new Position(5, 2)));
+       nouveauxJoueur();
+       leJeu = f.CreerPartieMenu(j1, j2, 1, largeur, longueur, 4);
+       leJeu.getPlateau().initialiser(sit);
+       int a=1;
     }
 }
