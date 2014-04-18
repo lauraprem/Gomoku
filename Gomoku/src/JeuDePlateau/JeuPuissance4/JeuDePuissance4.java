@@ -13,6 +13,6 @@ public class JeuDePuissance4 extends JeuDePlateau.JeuGomoku.JeuDeGomoku {
     @Override
     public boolean coupValide(Coup coup) {
 
-        return coup.getPosition().y < plateau.getLargeur();
+        return (coup.getPosition().y>0 && coup.getPosition().y <= plateau.getLargeur());
     }
 }

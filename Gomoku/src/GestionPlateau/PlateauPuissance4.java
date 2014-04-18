@@ -14,9 +14,9 @@ public class PlateauPuissance4 extends PlateauGomoku {
     @Override
     public boolean jouer(Coup coup) {
         if (coup != null) {
-            Position p = PremCaseVideColonne(coup.getPosition().y);
+            Position p = PremCaseVideColonne(coup.getPosition().y-1);
             if (p != null) {
-                Coup coupAJouer = new Coup(coup.getId(), PremCaseVideColonne(coup.getPosition().y));
+                Coup coupAJouer = new Coup(coup.getId(), p);
 
                 etatPlateau[coupAJouer.getPosition().x][coupAJouer.getPosition().y ] = coupAJouer.getId();
 
