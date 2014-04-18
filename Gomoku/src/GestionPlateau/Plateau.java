@@ -272,11 +272,16 @@ public class Plateau {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-
+        sb.append("     ");
+        for (int i = 1; i <= longueur; i++)
+        {sb.append(i + "  "); }
+        sb.append("\n\n");
         for (int i = 0; i < longueur; i++) {
+            sb.append(i+1); sb.append("    ");
             for (int j = 0; j < largeur; j++) {
+                
                 sb.append(etatPlateau[i][j]);
-                sb.append(" ");
+                sb.append("  ");
             }
             sb.append("\n");
         }

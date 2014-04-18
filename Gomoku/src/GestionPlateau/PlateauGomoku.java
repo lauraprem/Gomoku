@@ -81,7 +81,7 @@ public class PlateauGomoku extends Plateau
      * gagnant
      * @return vrai si le joueur a une position gagnante et faux sinon
      */
-    public boolean CheckGagne(int n, int id)
+    /*public boolean CheckGagne(int n, int id)
     {
         for (int i = 1; i <= longueur; i++)
         {
@@ -99,8 +99,16 @@ public class PlateauGomoku extends Plateau
         }
 
         return false;
-    }
+    }*/
 
+    /**
+     * <b> Méthode<\b> Permet de vérifier si le joueur dont on passe l'id
+     * a gagné grace à son dernier coup
+     * @param n
+     * @param id
+     * @param p
+     * @return 
+     */
     public boolean CheckGagneId(int n, int id, Position p)
     {
         for (int i = 1; i <= longueur - n; i++)
@@ -129,16 +137,31 @@ public class PlateauGomoku extends Plateau
      */
     public int CheckPlateau(int n)
     {
-        if (CheckGagne(n, 1))
+        for (int i = 1; i <= longueur; i++)
         {
-            return 1;
-        } else if (CheckGagne(n, 2))
-        {
-            return 2;
-        } else
-        {
-            return -1;
+            for (int j = 1; j <= largeur; j++)
+            {
+                if (i <= longueur - n && CheckColonneId(new Position(i, j), n, 1))
+                {
+                    return 1;
+                }
+                if (i <= longueur - n && CheckColonneId(new Position(i, j), n, 2))
+                {
+                    return 2;
+                }
+                if (j <= largeur - n && CheckLigneId(new Position(i, j), n, 1))
+                {
+                    return 1;
+                }
+                if (j <= largeur - n && CheckLigneId(new Position(i, j), n, 2))
+                {
+                    return 2;
+                }
+            }
         }
-
+        return -1;
     }
+    
+    
+    
 }

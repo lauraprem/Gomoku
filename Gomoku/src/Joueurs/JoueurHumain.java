@@ -41,20 +41,24 @@ public class JoueurHumain extends Joueur
         {
             try
             {
-                System.out.println("Veuillez saisir la coodonée de la largeur (entre 1 et " + etatJeu.getLargeur() + ") : \n");
+                System.out.println("Veuillez saisir la coodonée de la largeur (entre 1 et " + etatJeu.getLargeur() + ") : ");
                 largeur = sc.nextInt();
+                System.out.println("\n");
                 while (largeur > etatJeu.getLargeur() || largeur < 1)
                 {
-                    System.out.println("La largeur doit être comprise entre 1 et " + etatJeu.getLargeur() + " : \n");
+                    System.out.println("La largeur doit être comprise entre 1 et " + etatJeu.getLargeur() + " : ");
                     largeur = sc.nextInt();
+                    System.out.println("\n");
                 }
 
-                System.out.println("Veuillez saisir la coodonée de la longueur (entre 1 et " + etatJeu.getLongueur() + ") : \n");
+                System.out.println("Veuillez saisir la coodonée de la longueur (entre 1 et " + etatJeu.getLongueur() + ") : ");
                 longueur = sc.nextInt();
+                System.out.println("\n");
                 while (longueur > etatJeu.getLongueur() || longueur < 1)
                 {
-                    System.out.println("La longueur doit être comprise entre 1 et " + etatJeu.getLongueur() + " : \n");
+                    System.out.println("La longueur doit être comprise entre 1 et " + etatJeu.getLongueur() + " : ");
                     longueur = sc.nextInt();
+                    System.out.println("\n");
                 }
 
                 Coup res = new Coup(this.id, new Position(longueur, largeur));
