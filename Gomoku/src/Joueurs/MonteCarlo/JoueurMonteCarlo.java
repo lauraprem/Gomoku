@@ -60,7 +60,7 @@ public class JoueurMonteCarlo extends Joueur {
         Iterator<Position> it = positionsPossibles.iterator();
         while (it.hasNext()) {  // Parcours les Cases vides (possibles)
             Position p = (Position) it.next();
-            Coup cCourant = new Coup(id, new Position(p.x+1, p.y+1));
+            Coup cCourant = new Coup(id, new Position(p.x + 1, p.y + 1));
             Noeud nCourant = new Noeud(cCourant);
             etatJeu.jouer(cCourant);
             //ArrayList<Coup> sit = etatJeu.getSituation(); // copie de l'historique
@@ -72,13 +72,17 @@ public class JoueurMonteCarlo extends Joueur {
                 //reinitialiser sit // Problem de copie (pas faire par ref)
                 ArrayList<Coup> sitCopy = etatJeu.getSituation(); // copie de l'historique
                 JeuDePlateau j = factory.CreerPartieAleatoireVSAleatoire(sitCopy);
-                Joueur joueurGagnant = j.jouerPartie();//regarde qui a gagne(null pas detecte)
+                Joueur joueurGagnant = j.jouerPartieSansAffichage();//regarde qui a gagne(null pas detecte)
 
                 // Recherche si l'IA a gagnee
-                if (joueurGagnant.getId() == id) {
-                    nCourant.ajouterVictoire();
+                if (joueurGagnant != null) {
+                    if (joueurGagnant.getId() == id) {
+                        nCourant.ajouterVictoire();
+                    } else {
+                        nCourant.ajouterDefaite();
+                    }
                 } else {
-                    nCourant.ajouterDefaite();
+
                 }
                 nCourant.setNbSimulation(i + 1);
             }
