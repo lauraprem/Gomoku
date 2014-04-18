@@ -123,7 +123,7 @@ public class JeuDeGomoku extends JeuDePlateau
         if (((PlateauGomoku) (plateau)).CheckGagneId(nbPionGagne, joueurCourant.getId(),c.getPosition()))
         {
             return 1;
-        } else if (plateau.etatId(0).isEmpty() || c == null)
+        } else if ( c == null || plateau.etatId(0).isEmpty() )
         {
             return 0;
         } else
@@ -173,6 +173,8 @@ public class JeuDeGomoku extends JeuDePlateau
         Coup c = joueurCourant.genererCoup(plateau);
         while (!(coupValide(c)))
         {
+            /*if(joueurCourant.getClass() == JoueurHumain)
+                System.out.println("");*/
             c = joueurCourant.genererCoup(plateau);
         }
         plateau.jouer(c);
@@ -183,6 +185,7 @@ public class JeuDeGomoku extends JeuDePlateau
             joueurSuivant();
             System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n");
             c = joueurCourant.genererCoup(plateau);
+            if(c == null ) return null;
             while (!(coupValide(c)))
             {
                 c = joueurCourant.genererCoup(plateau);
@@ -224,6 +227,7 @@ public class JeuDeGomoku extends JeuDePlateau
         {
             joueurSuivant();
             c = joueurCourant.genererCoup(plateau);
+            if(c == null ) return null;
             while (!(coupValide(c)))
             {
                 c = joueurCourant.genererCoup(plateau);
