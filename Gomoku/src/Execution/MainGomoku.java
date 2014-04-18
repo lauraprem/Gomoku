@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package Tests;
+package Execution;
 
-import Navigation.Menu;
+import Navigation.MenuGomoku;
 
 /**
  *
@@ -16,7 +16,7 @@ public class MainGomoku
 {
     public static void main(String[] args)
     {
-        Menu m = new Menu();
+        MenuGomoku m = new MenuGomoku();
         m.run();
     }
 }

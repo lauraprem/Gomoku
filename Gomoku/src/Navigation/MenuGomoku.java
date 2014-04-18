@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  * @author Laura Prémillieu && Corinne Fagno
  */
-public class Menu
+public class MenuGomoku
 {
 
     private int j1;
@@ -29,7 +29,7 @@ public class Menu
     /**
      * <b>Constructeur<\b> permet de faire un menu
      */
-    public Menu()
+    public MenuGomoku()
     {
 
         jouer = true;
