@@ -11,15 +11,31 @@ import java.util.ArrayList;
 public interface JeuDePlateauFactory
 {
 
+   /**
+     * <b>Méthode<\b> Permettra de créer une partie avec deux joueurs
+     * humains à partir d'une situation donnée
+     *
+     * @param situation situation du jeu que l'on veut utiliser
+     * @return le jeu de Gomoku
+     */
     JeuDePlateau CreerPartieHumainVSHumain(ArrayList<Coup> situation);
 
+    /**
+     * <b>Méthode<\b> Permettra de créer une partie de Gomoku avec un joueur
+     * humain et un joueur aléatoire à partir d'une situation donnée
+     *
+     * @param situation situation du jeu que l'on veut utiliser
+     * @return le jeu de Gomoku
+     */
     JeuDePlateau CreerPartieHumainVSAleatoire(ArrayList<Coup> situation);
 
+    /**
+     * <b>Méthode<\b> Permettra de créer une partie de Gomoku avec deux joueurs
+     * aléatoire à partir d'une situation donnée
+     *
+     * @param situation situation du jeu que l'on veut utiliser
+     * @return le jeu de Gomoku
+     */
     JeuDePlateau CreerPartieAleatoireVSAleatoire(ArrayList<Coup> situation);
 
-//    JeuDePlateau CreerPartieAleatoireVSMonteCarlo(ArrayList<Coup> situation);
-//
-//    JeuDePlateau CreerPartieHumainVSMonteCarlo(ArrayList<Coup> situation);
-//
-//    JeuDePlateau CreerPartieMonteCarloVSMonteCarlo(ArrayList<Coup> situation);
 }

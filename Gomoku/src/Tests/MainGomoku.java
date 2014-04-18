@@ -10,7 +10,7 @@ import Navigation.Menu;
 
 /**
  *
- * @author leclerc
+ * @author Laura Prémillieu && Corinne Fagno
  */
 public class MainGomoku
 {

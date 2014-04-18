@@ -89,7 +89,7 @@ public abstract class JeuDePlateau
     public abstract int partieTerminee(Coup coup);
 
     /**
-     * permet de savoir si un coup est authorisé (s'il est dans les bornes du
+     * <b>Méthode<\b> permet de savoir si un coup est authorisé (s'il est dans les bornes du
      * plateau et sur une case vide)
      *
      * @param coup le coup que l'on veut tester

@@ -83,6 +83,10 @@ public class Coup implements Cloneable {
         return "Coup{" + "position=" + position + ", id=" + id + '}';
     }
 
+    /**
+     *<b>Méthode<\b> Clone le coup 
+     * @return un clone du coup
+     */
     @Override
     public Object clone() {
         Coup coup = null;

@@ -26,6 +26,9 @@ public class Menu
     private boolean jouer = true;
     private JeuDeGomokuFactory f;
 
+    /**
+     * <b>Constructeur<\b> permet de faire un menu
+     */
     public Menu()
     {
 
@@ -34,6 +37,10 @@ public class Menu
         f = new JeuDeGomokuFactory();
     }
 
+    /**
+     * Méthode principale du menu : demande au joueur quelle partie il veut 
+     * jouer puis la lui fait jouer jusqu'a ce qu'il quitte
+     */
     public void run()
     {
 
@@ -88,6 +95,9 @@ public class Menu
         }
     }
 
+  /**
+   *  <b>Méthode<\b> créé une nouvelle partie
+   */
     private void nouvellePartie()
     {
         nouveauxJoueur();
@@ -96,6 +106,9 @@ public class Menu
 
     }
 
+    /**
+     *  <b>Méthode<\b> demande au(x) joueurs leurs types
+     */
     private void nouveauxJoueur()
     {
         Scanner sc = new Scanner(System.in);
@@ -124,6 +137,9 @@ public class Menu
 
     }
 
+    /**
+     *  <b>Méthode<\b> demande le type de plateau
+     */
     private void nouveauPlateau()
     {
         Scanner sc = new Scanner(System.in);
@@ -147,6 +163,9 @@ public class Menu
         }
     }
 
+    /**
+     *  <b>Méthode<\b> demande les paramètres du plateau personnalisé
+     */
     private void plateauPerso()
     {
         Scanner sc = new Scanner(System.in);
@@ -183,12 +202,18 @@ public class Menu
 
     }
 
+    /**
+     * prépare un plateau standard
+     */
     private void plateauStandard()
     {
         p = 1;
         n = 4;
     }
 
+    /**
+     * reprend une partie
+     */
     private void reprendrePartie()
     {
         ArrayList<Coup> sit = new ArrayList<>();

@@ -40,6 +40,10 @@ public int getId()
  */
 public abstract Coup genererCoup(Plateau etatJeu);
 
+/**
+ * Permet de mettre le joueur sous forme de chaine
+ * @return la chaine représentant le joueur
+ */
     @Override
     public String toString()
     {
