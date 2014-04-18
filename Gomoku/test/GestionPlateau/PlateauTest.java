@@ -42,11 +42,11 @@ public class PlateauTest {
         //Fabrication de coups précédent
         coupsPrecedents = new ArrayList<Coup>();
         for (int i = 0; i < 3; i++) {
-            coupsPrecedents.add(new Coup(Utilitaire.monRamdom(1, 2), new Point((int) Utilitaire.monRamdom(-1, longueur), (int) Utilitaire.monRamdom(-1, largeur))));
+            coupsPrecedents.add(new Coup(Utilitaire.monRamdom(1, 2), new Position((int) Utilitaire.monRamdom(-1, longueur), (int) Utilitaire.monRamdom(-1, largeur))));
         }
 
         //Fabrication de coup
-        coup = new Coup(Utilitaire.monRamdom(1, 2), new Point((int) Utilitaire.monRamdom(0, longueur - 1), (int) Utilitaire.monRamdom(0, largeur - 1)));
+        coup = new Coup(Utilitaire.monRamdom(1, 2), new Position((int) Utilitaire.monRamdom(0, longueur - 1), (int) Utilitaire.monRamdom(0, largeur - 1)));
     }
 
     @After
@@ -117,7 +117,7 @@ public class PlateauTest {
         instancePlateau.initialiser(coupsPrecedents);
 
         // Generation d'un Coup
-        Coup coup = new Coup(1, new Point((int) Utilitaire.monRamdom(0, 8), (int) Utilitaire.monRamdom(0, 10)));//historiq
+        Coup coup = new Coup(1, new Position((int) Utilitaire.monRamdom(0, 8), (int) Utilitaire.monRamdom(0, 10)));//historiq
 
         // Verification si on peut jouer le Coup
         if ((coup.getPosition().x >= 0 && coup.getPosition().x < instancePlateau.longueur)
