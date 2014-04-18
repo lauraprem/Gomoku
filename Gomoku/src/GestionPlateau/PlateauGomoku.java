@@ -71,35 +71,6 @@ public class PlateauGomoku extends Plateau
         return x == x_end;
     }
 
-    /**
-     * <b>Méthode</b> permet de parcourir la grille pour tester si chaque ligne
-     * et chaque colone est gagnante. Si l'on trouve une combinaison gagnante,
-     * on s'arrete
-     *
-     * @param n nombre de pion à aligner pour gagner
-     * @param id identifiant du joueur pour qui on veut vérifier si le coup est
-     * gagnant
-     * @return vrai si le joueur a une position gagnante et faux sinon
-     */
-    /*public boolean CheckGagne(int n, int id)
-    {
-        for (int i = 1; i <= longueur; i++)
-        {
-            for (int j = 1; j <= largeur; j++)
-            {
-                if (i <= longueur - n && CheckColonneId(new Position(i, j), n, id))
-                {
-                    return true;
-                }
-                if (j <= largeur - n && CheckLigneId(new Position(i, j), n, id))
-                {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }*/
 
     /**
      * <b> Méthode<\b> Permet de vérifier si le joueur dont on passe l'id
