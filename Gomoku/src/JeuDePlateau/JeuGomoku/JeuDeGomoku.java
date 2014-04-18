@@ -104,7 +104,7 @@ public class JeuDeGomoku extends JeuDePlateau
     {
         {
             /*if (coup == null)
-                return false;*/
+             return false;*/
             return ((coup.getPosition().x > 0 && coup.getPosition().x <= plateau.getLongueur())
                     && (coup.getPosition().y > 0 && coup.getPosition().x <= plateau.getLargeur())
                     && plateau.getCase(coup.getPosition().x - 1, coup.getPosition().y - 1) == 0);
@@ -120,10 +120,10 @@ public class JeuDeGomoku extends JeuDePlateau
     @Override
     public int partieTerminee(Coup c)
     {
-        if (((PlateauGomoku) (plateau)).CheckGagneId(nbPionGagne, joueurCourant.getId(),c.getPosition()))
+        if (((PlateauGomoku) (plateau)).CheckGagneId(nbPionGagne, joueurCourant.getId(), c.getPosition()))
         {
             return 1;
-        } else if ( c == null || plateau.etatId(0).isEmpty() )
+        } else if (c == null || plateau.etatId(0).isEmpty())
         {
             return 0;
         } else
@@ -164,40 +164,55 @@ public class JeuDeGomoku extends JeuDePlateau
     {
         int id = joueurGagnant();
         if (id == 0)
+        {
             return null;
-         else if (id != 0 && id != -1)
+        } else if (id != 0 && id != -1)
+        {
             return getLesJoueur(id);
-       
+        }
+
         System.out.println(plateau.toString());
         System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n");
         Coup c = joueurCourant.genererCoup(plateau);
         while (!(coupValide(c)))
         {
-            /*if(joueurCourant.getClass() == JoueurHumain)
-                System.out.println("");*/
+            if (joueurCourant instanceof JoueurHumain)
+            {
+                System.out.println("Cette case est déjà occupée, veuillez rejouer : \n");
+            }
             c = joueurCourant.genererCoup(plateau);
         }
         plateau.jouer(c);
         System.out.println(plateau.toString());
-        
+
         while (partieTerminee(c) == -1)
         {
             joueurSuivant();
             System.out.println("Au tour du joueur d'ID : " + joueurCourant.getId() + "\n");
             c = joueurCourant.genererCoup(plateau);
-            if(c == null ) return null;
+            if (c == null)
+            {
+                return null;
+            }
             while (!(coupValide(c)))
             {
+                if (joueurCourant instanceof JoueurHumain)
+                {
+                    System.out.println("Cette case est déjà occupée, veuillez rejouer : \n");
+                }
                 c = joueurCourant.genererCoup(plateau);
             }
             plateau.jouer(c);
             System.out.println(plateau.toString());
         }
-        
+
         if (partieTerminee(c) == 1)
+        {
             return joueurCourant;
-        else
+        } else
+        {
             return null;
+        }
     }
 
     /**
@@ -212,22 +227,28 @@ public class JeuDeGomoku extends JeuDePlateau
 
         int id = joueurGagnant();
         if (id == 0)
+        {
             return null;
-        else if (id != 0 && id != -1)
+        } else if (id != 0 && id != -1)
+        {
             return getLesJoueur(id);
-        
+        }
+
         Coup c = joueurCourant.genererCoup(plateau);
         while (!(coupValide(c)))
         {
             c = joueurCourant.genererCoup(plateau);
         }
         plateau.jouer(c);
-        
+
         while (partieTerminee(c) == -1)
         {
             joueurSuivant();
             c = joueurCourant.genererCoup(plateau);
-            if(c == null ) return null;
+            if (c == null)
+            {
+                return null;
+            }
             while (!(coupValide(c)))
             {
                 c = joueurCourant.genererCoup(plateau);
@@ -235,9 +256,12 @@ public class JeuDeGomoku extends JeuDePlateau
             plateau.jouer(c);
         }
         if (partieTerminee(c) == 1)
+        {
             return joueurCourant;
-        else
+        } else
+        {
             return null;
-        
+        }
+
     }
 }

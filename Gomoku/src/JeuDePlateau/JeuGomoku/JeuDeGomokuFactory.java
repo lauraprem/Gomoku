@@ -140,7 +140,7 @@ public class JeuDeGomokuFactory implements JeuDePlateauFactory
                 joueur1 = new JoueurAleatoire(1);
                 break;
             case 3:
-                joueur1 = new JoueurMonteCarlo(1, 100, new JeuDeGomokuFactory());
+                joueur1 = new JoueurMonteCarlo(1, 1000, new JeuDeGomokuFactory());
                 break;
             default:
                 joueur1 = new JoueurHumain(1);
@@ -154,7 +154,7 @@ public class JeuDeGomokuFactory implements JeuDePlateauFactory
                 joueur2 = new JoueurAleatoire(2);
                 break;
             case 3:
-                joueur2 = new JoueurMonteCarlo(2, 100, new JeuDeGomokuFactory());
+                joueur2 = new JoueurMonteCarlo(2, 1000, new JeuDeGomokuFactory());
                 break;
             default:
                 joueur2 = new JoueurHumain(2);

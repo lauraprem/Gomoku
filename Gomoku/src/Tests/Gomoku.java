@@ -27,15 +27,21 @@ public class Gomoku {
 
         // Pour tester
         ArrayList<Coup> sit = new ArrayList<Coup>();
-        sit.add(new Coup(2, new Position(0, 2)));
+        /*sit.add(new Coup(2, new Position(0, 2)));
         sit.add(new Coup(1, new Position(3, 6)));
         sit.add(new Coup(2, new Position(1, 2)));
         sit.add(new Coup(1, new Position(3, 5)));
         sit.add(new Coup(2, new Position(2, 5)));
         sit.add(new Coup(1, new Position(3, 4)));
-        sit.add(new Coup(2, new Position(5, 2)));
+        sit.add(new Coup(2, new Position(5, 2)));*/
 //        sit.add(new Coup(1, new Position(3, 7)));
 
+        sit.add(new Coup(2, new Position(0,0)));
+        sit.add(new Coup(1, new Position(0,1)));
+        sit.add(new Coup(2, new Position(1,0)));
+        sit.add(new Coup(1, new Position(0,2)));
+        sit.add(new Coup(2, new Position(2,0)));
+        
         p.initialiser(sit);
 
         JeuDePlateauFactory factory = new JeuDeGomokuFactory();
