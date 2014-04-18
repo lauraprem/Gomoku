@@ -94,24 +94,6 @@ public class JeuDeGomokuFactory implements JeuDePlateauFactory
 
     }
 
-//    @Override
-//    public JeuDePlateau CreerPartieAleatoireVSMonteCarlo(ArrayList<Coup> situation)
-//    {        JeuDeGomoku j = new JeuDeGomoku(2 == situation.get(situation.size() - 1).getId(),
-//                new JoueurAleatoire(1), new JoueurMonteCarlo(2), 9, 9, 4);
-//        j.getPlateau().initialiser(situation);
-//        return j;   }
-//
-//    @Override
-//    public JeuDePlateau CreerPartieHumainVSMonteCarlo(ArrayList<Coup> situation)
-//    {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-//
-//    @Override
-//    public JeuDePlateau CreerPartieMonteCarloVSMonteCarlo(ArrayList<Coup> situation)
-//    {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
     
     /**
      *  <b>Méthode<\b> Permet de créer une partie de Gomoku personnalisée

@@ -11,6 +11,12 @@ package GestionPlateau;
  */
 public class PlateauPuissance4 extends PlateauGomoku {
 
+    public PlateauPuissance4(int longueur, int largeur)
+    {super(longueur,largeur); }
+
+    public PlateauPuissance4()
+    {super(); }
+
     @Override
     public boolean jouer(Coup coup) {
         if (coup != null) {
