@@ -63,16 +63,14 @@ public class JoueurMonteCarlo extends Joueur {
             Coup cCourant = new Coup(id, new Position(p.x + 1, p.y + 1));
             Noeud nCourant = new Noeud(cCourant);
             etatJeu.jouer(cCourant);
-            //ArrayList<Coup> sit = etatJeu.getSituation(); // copie de l'historique
 
             // Simuler nbSim parties à partir de sit et ajouter
             // les résultats à nCourant à la fin de chaque
             // simulation entre deux joueurs aléatoires
             for (int i = 0; i < nbSimulation; i++) {
-                //reinitialiser sit // Problem de copie (pas faire par ref)
                 ArrayList<Coup> sitCopy = etatJeu.getSituation(); // copie de l'historique
                 JeuDePlateau j = factory.CreerPartieAleatoireVSAleatoire(sitCopy);
-                Joueur joueurGagnant = j.jouerPartieSansAffichage();//regarde qui a gagne(null pas detecte)
+                Joueur joueurGagnant = j.jouerPartieSansAffichage();
 
                 // Recherche si l'IA a gagnee
                 if (joueurGagnant != null) {
@@ -81,8 +79,8 @@ public class JoueurMonteCarlo extends Joueur {
                     } else {
                         nCourant.ajouterDefaite();
                     }
-                } else {
-
+                }else {
+                    nCourant.ajouterEgalite();
                 }
                 nCourant.setNbSimulation(i + 1);
             }

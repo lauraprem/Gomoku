@@ -7,13 +7,12 @@ import GestionPlateau.Coup;
  *
  * @author Laura Prémillieu && Corinne Fagno
  */
-public class Noeud
-{
+public class Noeud {
     // ATTRIBUTS
     /**
      * Nombre de victoires
      */
-    private int nbVictoire;
+    private double nbVictoire;
 
     /**
      * Nombre de simulations qui seront effectuées
@@ -33,8 +32,7 @@ public class Noeud
      * @param _coup
      * @see Coup
      */
-    public Noeud(Coup _coup)
-    {
+    public Noeud(Coup _coup) {
         coup = _coup;
         nbVictoire = 0;
         nbSimulation = 0;
@@ -47,8 +45,7 @@ public class Noeud
      * @return le Coup du Noeud
      * @see Coup
      */
-    public Coup getCoup()
-    {
+    public Coup getCoup() {
         return coup;
     }
 
@@ -58,8 +55,7 @@ public class Noeud
      *
      * @param nbSimulation nombre de simulations qui sera effectuées
      */
-    public void setNbSimulation(int nbSimulation)
-    {
+    public void setNbSimulation(int nbSimulation) {
         this.nbSimulation = nbSimulation;
     }
 
@@ -69,8 +65,7 @@ public class Noeud
      * @param coup le nouveau Coup du Noeud
      * @see Coup
      */
-    public void setCoup(Coup coup)
-    {
+    public void setCoup(Coup coup) {
         this.coup = coup;
     }
 
@@ -82,29 +77,35 @@ public class Noeud
      * @return moyenne statistique du Coup
      * @see Coup
      */
-    public double getMoyenne()
-    {
-        if (nbSimulation != 0)
-        {
-            return nbVictoire / nbSimulation;
+    public double getMoyenne() {
+        if (nbSimulation != 0) {
+            return ((double) nbVictoire / (double) nbSimulation);
         }
 
         return 0;
     }
 
     /**
-     * <b>Méthode</b> permettant d'augmenter de 1 le nombre de victoire
+     * <b>Méthode</b> permettant d'augmenter de 1 le nombre de victoire en cas
+     *  de victoire
      */
-    public void ajouterVictoire()
-    {
+    public void ajouterVictoire() {
         nbVictoire++;
     }
 
     /**
-     * <b>Méthode</b> permettant de diminuer de 1 le nombre de victoire
+     * <b>Méthode</b> permettant de diminuer de 1 le nombre de victoire en cas
+     *  de défaite
      */
-    public void ajouterDefaite()
-    {
+    public void ajouterDefaite() {
         nbVictoire--;
+    }
+
+    /**
+     * <b>Méthode</b> permettant d'augmenter de 0.5 le nombre de victoire en cas
+     * d'égalité
+     */
+    public void ajouterEgalite() {
+        nbVictoire = nbVictoire + 0.5;
     }
 }
