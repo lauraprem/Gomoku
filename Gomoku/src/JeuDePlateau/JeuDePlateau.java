@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * représente une partie d'un jeu de plateau quelconque
  *
- * @author Laura Prémillieu && Corinne Fagno
+ * @author Laura Prémillieu && Corinne
  */
 public abstract class JeuDePlateau 
 {
