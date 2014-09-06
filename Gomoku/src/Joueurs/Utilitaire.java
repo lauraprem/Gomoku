@@ -9,7 +9,7 @@ package Joueurs;
 import java.util.Random;
 /**
  * classe donnant des outils utiles à la programmation
- * @author Laura Prémillieu && Corinne Fagno
+ * @author Laura Prémillieu && Corinne
  */
 public class Utilitaire 
 {
