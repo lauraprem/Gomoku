@@ -5,7 +5,7 @@ import GestionPlateau.Coup;
 import GestionPlateau.Plateau;
 /**
  * Classe abstraite représentant un joueur
- * @author Laura Prémillieu && Corinne Fagno
+ * @author Laura Prémillieu && Corinne
  */
 public abstract class Joueur 
 {
