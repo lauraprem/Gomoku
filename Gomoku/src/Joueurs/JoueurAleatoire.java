@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * reprensente un joueur qui choisit ses coups de manière aléatoire. Hérite d'un
  * joueur
  *
- * @author Laura Prémillieu && Corinne Fagno
+ * @author Laura Prémillieu && Corinne
  */
 public class JoueurAleatoire extends Joueur {
 
