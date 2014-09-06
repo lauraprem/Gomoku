@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  * reprensente un joueur humain qui joue au clavier. Hérite d'un joueur
  *
- * @author Laura Prémillieu && Corinne Fagno
+ * @author Laura Prémillieu && Corinne
  */
 public class JoueurHumain extends Joueur
 {
