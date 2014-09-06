@@ -4,7 +4,7 @@ package GestionPlateau;
  * représsente un plateau de gomoku, qui étend un plateau de manière plus
  * générale
  *
- * @author Laura Prémillieu && Corinne Fagno
+ * @author Laura Prémillieu && Corinne
  */
 public class PlateauGomoku extends Plateau
 {
