@@ -6,7 +6,7 @@ import java.util.Iterator;
 /**
  * Représente le <b>Plateau de jeu</b>
  *
- * @author Laura Prémillieu && Corinne Fagno
+ * @author Laura Prémillieu && Corinne
  */
 public class Plateau {
     // ATTRIBUTS   
