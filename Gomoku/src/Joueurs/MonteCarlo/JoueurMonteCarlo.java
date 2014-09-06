@@ -13,7 +13,7 @@ import java.util.Iterator;
 /**
  * Représente un <b>Coup joué</b>
  *
- * @author Laura Prémillieu && Corinne Fagno
+ * @author Laura Prémillieu && Corinne
  */
 public class JoueurMonteCarlo extends Joueur {
     // ATTRIBUTS   
