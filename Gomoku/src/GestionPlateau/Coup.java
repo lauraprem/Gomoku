@@ -3,7 +3,7 @@ package GestionPlateau;
 /**
  * Représente un <b>Coup joué</b>
  *
- * @author Laura Prémillieu && Corinne Fagno
+ * @author Laura Prémillieu && Corinne
  */
 public class Coup implements Cloneable {
     // ATTRIBUTS
