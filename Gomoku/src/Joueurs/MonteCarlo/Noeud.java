@@ -5,7 +5,7 @@ import GestionPlateau.Coup;
 /**
  * Représente une association d'un <b>Coup</b> à une <b>moyenne statistique</b>
  *
- * @author Laura Prémillieu && Corinne Fagno
+ * @author Laura Prémillieu && Corinne
  */
 public class Noeud {
     // ATTRIBUTS
