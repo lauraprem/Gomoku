@@ -9,7 +9,7 @@ import Joueurs.JoueurHumain;
 /**
  * représente une partie de Gomoku
  *
- * @author Laura Prémillieu && Corinne Fagno
+ * @author Laura Prémillieu && Corinne
  */
 public class JeuDeGomoku extends JeuDePlateau
 {
