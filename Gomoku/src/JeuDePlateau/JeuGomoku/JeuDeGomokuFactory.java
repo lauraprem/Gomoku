@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Laura Prémillieu && Corinne Fagno
+ * @author Laura Prémillieu && Corinne
  */
 public class JeuDeGomokuFactory implements JeuDePlateauFactory
 {
